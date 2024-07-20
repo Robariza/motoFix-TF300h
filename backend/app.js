@@ -17,6 +17,9 @@ const port = process.env.PORT;
 // Conexión MDB
 connectionMongo();
 
+//Para que se pueda leer y enviar datos en formato json
+app.use(express.json());
+
 // ESCUCHAR SERVIDOR
 app.listen(port, ()=> {
     console.log(`El servidor se está escuchando en : http://localhost:${port}`)
