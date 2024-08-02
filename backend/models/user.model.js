@@ -34,7 +34,7 @@ const userSchema = new schema({
         default: Date.now
     },
 
-    // Campos adicionales para el perfil de usuario
+    // perfil de usuario
     firstName: {
         type: String,
         trim: true

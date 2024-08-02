@@ -7,7 +7,7 @@ export const getAdmins = async (req, res) => {
         if (admins.length === 0) {
             return res.status(404).json({ message: 'No se encontraron administradores' });
         }
-        return res.status(200).json(admins); // Cambiado de `res.send` a `res.json`
+        return res.status(200).json(admins); 
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -22,7 +22,7 @@ export const postAdmin = async (req, res) => {
     }
 
     try {
-        // Aquí podrías agregar hashing de la contraseña si es necesario
+       
         const newAdmin = await adminModel.create({ username, password, email, firstName, lastName, address, phone });
         return res.status(201).json(newAdmin);
     } catch (error) {
@@ -33,7 +33,7 @@ export const postAdmin = async (req, res) => {
 // Lógica de petición DELETE
 export const deleteAdminById = async (req, res) => {
     try {
-        const idForDelete = req.params.id; // Cambiado de `req.params._id` a `req.params.id`
+        const idForDelete = req.params.id; 
         const adminDelete = await adminModel.findByIdAndDelete(idForDelete);
 
         if (!adminDelete) {

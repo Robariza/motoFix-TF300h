@@ -26,7 +26,7 @@ const productSchema = new Schema({
     },
     images: {
         type: String,
-        default: '' // Valor por defecto como cadena vacía si no hay imágenes
+        default: '' 
     },
     createdAt: {
         type: Date,
