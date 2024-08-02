@@ -1,6 +1,6 @@
 // Importaciones
 import express from 'express';
-import { getAdmins, postAdmin, deleteAdminById, putAdminById } from '../controllers/admin.controller.js';
+import { getAdmins, postAdmin, deleteAdminById } from '../controllers/admin.controller.js';
 
 // Configuramos el Router de express
 const adminsRouter = express.Router();
@@ -8,16 +8,13 @@ const adminsRouter = express.Router();
 // Definimos nuestras rutas
 
 // Ruta para la petición GET
-adminsRouter.get('/obtenerAdministradores', getAdmins);
+adminsRouter.get('/', getAdmins);
 
 // Ruta para la petición POST
-adminsRouter.post('/registrarAdministrador', postAdmin);
+adminsRouter.post('/', postAdmin);
 
 // Ruta para la petición DELETE
-adminsRouter.delete('/eliminarAdministrador/:_id', deleteAdminById);
-
-// Ruta para la petición PUT
-adminsRouter.put('/actualizarAdministrador/:_id', putAdminById);
+adminsRouter.delete('/:id', deleteAdminById);
 
 // Exportación de rutas
 export default adminsRouter;

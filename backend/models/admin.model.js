@@ -1,31 +1,13 @@
 // Importación Schema (plantilla)
 import mongoose from 'mongoose';
+import { userModel } from './user.model.js';
+
 const schema = mongoose.Schema;
 
 const adminSchema = new schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        match: [/.+\@.+\..+/, 'Por favor, ingrese un correo válido']
-    },
-    role: {
+    roleAdmin: {
         type: String,
         default: 'admin'
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     },
     updatedAt: {
         type: Date,
@@ -40,4 +22,6 @@ adminSchema.pre('save', function (next) {
 });
 
 // Exportar el modelo de administrador
-export const Admin = mongoose.model('Admin', adminSchema);
+const adminModel = userModel.discriminator('Admin', adminSchema);
+
+export default adminModel;

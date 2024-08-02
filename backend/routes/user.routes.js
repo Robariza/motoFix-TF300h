@@ -8,16 +8,16 @@ const usersRouter = express.Router();
 // Definimos nuestras rutas
 
 // Ruta para la petición GET
-usersRouter.get('/obtenerUsuarios', getUsers);
+usersRouter.get('/', getUsers);
 
 // Ruta para la petición POST
-usersRouter.post('/registrarUsuario', postUser);
+usersRouter.post('/', postUser);
 
 // Ruta para la petición DELETE
-usersRouter.delete('/eliminarUsuario/:_id', deleteUserById);
+usersRouter.delete('/:id', deleteUserById);
 
 // Ruta para la petición PUT
-usersRouter.put('/actualizarUsuario/:_id', putUserById);
+usersRouter.put('/:id', putUserById);
 
 // Exportación de rutas
 export default usersRouter;

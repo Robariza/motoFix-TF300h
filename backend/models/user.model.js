@@ -21,7 +21,7 @@ const userSchema = new schema({
         // match -> asegura que los correos ingresados tengan un formato válido [expresión regular, mensaje de error]
         match: [/.+\@.+\..+/, 'Por favor, ingrese un correo válido']
     },
-    role: {
+    roleUser: {
         type: String,
         default: 'customer'
     },

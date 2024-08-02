@@ -1,13 +1,11 @@
-// Importación Schema (plantilla)
-import mongoose from "mongoose";
-const schema = mongoose.Schema;
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
 // Definir el esquema de producto
-const productSchema = new schema({
+const productSchema = new Schema({
     name: {
         type: String,
         required: true,
-        // trim -> Elimina espacios en blanco para evitar problemas
         trim: true
     },
     description: {
@@ -27,7 +25,8 @@ const productSchema = new schema({
         default: 0
     },
     images: {
-        type: String
+        type: String,
+        default: '' // Valor por defecto como cadena vacía si no hay imágenes
     },
     createdAt: {
         type: Date,
@@ -39,11 +38,13 @@ const productSchema = new schema({
     },
 });
 
-// Middleware para actualizar el campo 'updatedAt' antes de cada guardado
+// Middleware para actualizar el campo 'updatedAt' solo si hay cambios
 productSchema.pre('save', function (next) {
-    this.updatedAt = Date.now();
+    if (this.isModified()) {
+        this.updatedAt = Date.now();
+    }
     next();
 });
 
-// Creación y exportación del modelo 
-export const productModel = mongoose.model('productos', productSchema);
+// Creación y exportación del modelo
+export const productModel = mongoose.model('Product', productSchema);

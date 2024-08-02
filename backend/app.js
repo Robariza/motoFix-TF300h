@@ -5,6 +5,10 @@ import express from 'express'
 import dotenv from 'dotenv'
 // conexión MDB (modulo)
 import connectionMongo from './config/connectionDB.js';
+// ROUTES
+import usersRouter from './routes/user.routes.js';
+import adminsRouter from './routes/admin.routes.js';
+import productsRouter from './routes/product.routes.js';
 
 // CONFIGURACIÓN DE USO DE IMPORTACIONES
 // express (servidor)
@@ -16,6 +20,14 @@ const port = process.env.PORT;
 
 // Conexión MDB
 connectionMongo();
+app.use(express.json());
+
+// middleware incorporado -> users
+app.use('/user', usersRouter);
+// Admin
+app.use('/admin', adminsRouter);
+// Prtoducts
+app.use('/product', productsRouter);
 
 //Para que se pueda leer y enviar datos en formato json
 app.use(express.json());
