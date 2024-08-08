@@ -1,5 +1,6 @@
 // Importación Schema (plantilla)
 import mongoose from 'mongoose';
+import { updateTimestamp } from '../middlewares/updateTimestamp.js';
 import { userModel } from './user.model.js';
 
 const schema = mongoose.Schema;
@@ -11,11 +12,8 @@ const adminSchema = new schema({
     }
 });
 
-// Middleware para actualizar el campo 'updatedAt' antes de cada guardado
-adminSchema.pre('save', function (next) {
-    this.updatedAt = Date.now();
-    next();
-});
+// Aplicar el middleware para actualizar el campo 'updatedAt'
+adminSchema.pre('save', updateTimestamp);
 
 // Exportar el modelo de administrador
 const adminModel = userModel.discriminator('Admin', adminSchema);

@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import { updateTimestamp } from '../middlewares/updateTimestamp.js';
+
 const { Schema } = mongoose;
 
 // Definir el esquema de producto
@@ -17,8 +19,9 @@ const productSchema = new Schema({
         required: true
     },
     category: {
-        type: String,
-        trim: true
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
     },
     stock: {
         type: Number,
@@ -26,7 +29,7 @@ const productSchema = new Schema({
     },
     images: {
         type: String,
-        default: '' 
+        default: ''
     },
     createdAt: {
         type: Date,
@@ -38,13 +41,8 @@ const productSchema = new Schema({
     },
 });
 
-// Middleware para actualizar el campo 'updatedAt' solo si hay cambios
-productSchema.pre('save', function (next) {
-    if (this.isModified()) {
-        this.updatedAt = Date.now();
-    }
-    next();
-});
+// Aplicar el middleware para actualizar el campo 'updatedAt'
+productSchema.pre('save', updateTimestamp);
 
 // Creación y exportación del modelo
 export const productModel = mongoose.model('Product', productSchema);

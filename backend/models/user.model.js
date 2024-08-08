@@ -1,9 +1,11 @@
-// Importación Schema (plantilla)
+// models/user.model.js
 import mongoose from 'mongoose';
-const schema = mongoose.Schema;
+import { updateTimestamp } from '../middlewares/updateTimestamp.js';
+
+const { Schema } = mongoose;
 
 // Estructuración de la información
-const userSchema = new schema({
+const userSchema = new Schema({
     username: {
         type: String,
         required: true,
@@ -18,12 +20,11 @@ const userSchema = new schema({
         type: String,
         required: true,
         unique: true,
-        // match -> asegura que los correos ingresados tengan un formato válido [expresión regular, mensaje de error]
         match: [/.+\@.+\..+/, 'Por favor, ingrese un correo válido']
     },
     role: {
         type: String,
-        required:true,
+        required: true,
     },
     createdAt: {
         type: Date,
@@ -33,8 +34,6 @@ const userSchema = new schema({
         type: Date,
         default: Date.now
     },
-
-    // perfil de usuario
     firstName: {
         type: String,
         trim: true
@@ -53,11 +52,8 @@ const userSchema = new schema({
     },
 });
 
-// Middleware para actualizar el campo 'updatedAt' antes de cada guardado
-userSchema.pre('save', function (next) {
-    this.updatedAt = Date.now();
-    next();
-});
+// Aplicar el middleware para actualizar el campo 'updatedAt'
+userSchema.pre('save', updateTimestamp);
 
 // Creación y exportación del modelo
-export const userModel = mongoose.model('usuario', userSchema);
+export const userModel = mongoose.model('User', userSchema);

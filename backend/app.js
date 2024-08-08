@@ -9,7 +9,7 @@ import connectionMongo from './config/connectionDB.js';
 import usersRouter from './routes/user.routes.js';
 import adminsRouter from './routes/admin.routes.js';
 import productsRouter from './routes/product.routes.js';
-
+import categoryRoutes from './routes/category.routes.js';
 // CONFIGURACIÓN DE USO DE IMPORTACIONES
 // express (servidor)
 const app = express();
@@ -28,6 +28,8 @@ app.use('/user', usersRouter);
 app.use('/admin', adminsRouter);
 // Prtoducts
 app.use('/product', productsRouter);
+// Category
+app.use('/categories', categoryRoutes);
 
 //Para que se pueda leer y enviar datos en formato json
 app.use(express.json());
