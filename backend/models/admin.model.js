@@ -5,10 +5,6 @@ import { userModel } from './user.model.js';
 const schema = mongoose.Schema;
 
 const adminSchema = new schema({
-    roleAdmin: {
-        type: String,
-        default: 'admin'
-    },
     updatedAt: {
         type: Date,
         default: Date.now

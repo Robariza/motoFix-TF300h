@@ -15,15 +15,15 @@ export const getAdmins = async (req, res) => {
 
 // Lógica de petición POST
 export const postAdmin = async (req, res) => {
-    const { username, password, email, firstName, lastName, address, phone } = req.body;
+    const { username, password, email, role, firstName, lastName, address, phone } = req.body;
 
-    if (!username || !password || !email) {
+    if (!username || !password || !email || !role) {
         return res.status(400).json({ message: 'Debe ingresar todos los campos requeridos: nombre de usuario, contraseña y correo' });
     }
 
     try {
        
-        const newAdmin = await adminModel.create({ username, password, email, firstName, lastName, address, phone });
+        const newAdmin = await adminModel.create({ username, password, email, role, firstName, lastName, address, phone });
         return res.status(201).json(newAdmin);
     } catch (error) {
         return res.status(500).json({ message: error.message });
