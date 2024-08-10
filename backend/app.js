@@ -1,40 +1,39 @@
 // IMPORTACIONES
 // Montaje servidor
-import express from 'express'
-// variables de entorno
-import dotenv from 'dotenv'
-// conexión MDB (modulo)
+import express from 'express';
+// Variables de entorno
+import dotenv from 'dotenv';
+// Conexión MDB (módulo)
 import connectionMongo from './config/connectionDB.js';
 // ROUTES
 import usersRouter from './routes/user.routes.js';
 import adminsRouter from './routes/admin.routes.js';
 import productsRouter from './routes/product.routes.js';
 import categoryRoutes from './routes/category.routes.js';
+import authRoutes from './routes/auth.routes.js';
+import { loginService } from './services/login.service.js';
+
 // CONFIGURACIÓN DE USO DE IMPORTACIONES
 // express (servidor)
 const app = express();
 
 // variables de entorno
 dotenv.config();
-const port = process.env.PORT;
+const port = process.env.PORT || 6000; // Valor predeterminado 3000 si no está definido en las variables de entorno
 
 // Conexión MDB
 connectionMongo();
 app.use(express.json());
 
-// middleware incorporado -> users
+// Rutas
 app.use('/user', usersRouter);
-// Admin
 app.use('/admin', adminsRouter);
-// Prtoducts
 app.use('/product', productsRouter);
-// Category
 app.use('/categories', categoryRoutes);
-
-//Para que se pueda leer y enviar datos en formato json
-app.use(express.json());
+app.use('/auth', authRoutes);
+app.use('/login', loginService)
 
 // ESCUCHAR SERVIDOR
-app.listen(port, ()=> {
-    console.log(`El servidor se está escuchando en : http://localhost:${port}`)
-})
+app.listen(port, () => {
+    console.log(`El servidor se está escuchando en : http://localhost:${port}`);
+});
