@@ -1,0 +1,11 @@
+/* gallery.component.css */
+.container{
+    margin-bottom: 100px;
+}
+
+.mb-3 img {
+    width: 130px;
+    height: 80px;
+    object-fit: fill;
+  }
+  

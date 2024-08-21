@@ -1,4 +1,3 @@
-// Importaciones
 import express from 'express'; 
 import { getAdmins, postAdmin, deleteAdminById, updateAdminById } from '../controllers/admin.controller.js'; 
 import auth from '../middlewares/auth.js'; 
@@ -16,7 +15,7 @@ adminsRouter.get('/', auth('admin'), getAdmins);
 adminsRouter.post('/', postAdmin);
 
 // Ruta para la petición PUT
-adminsRouter.put('/:id', auth(), updateAdminById);
+adminsRouter.put('/:id', auth('admin'), updateAdminById);
 
 
 // Ruta para la petición DELETE

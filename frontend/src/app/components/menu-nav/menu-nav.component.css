@@ -1,6 +1,56 @@
-.nav ul{
-    display: flex;
-    justify-content: center;
+.nav{ 
+    width: 100vw;
+    height: 160px;
+    color: var(--colorFont);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+}
 
+.navIcon{
+    width: 100%;
+    height: 70%;
+
+    background-color: var(--colorPrincipal);
+    border-bottom: solid 5px var(--colorContraste);
+
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.navIcon ul {
+    display: flex;
+    list-style: none;
     gap: 20px;
+    margin-right: 50px;
+}
+
+.navIcon i {
+    font-size: 20px;
+}
+
+.navBar {
+    width: 100%;
+    height: 30%;
+
+    background-color: var(--colorSecundario);
+
+    display: grid;
+    place-content: center;
+}
+
+.navBar ul{
+    display: flex;
+    list-style: none;
+    margin-top: 15px;
+    gap: 20px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--colorContraste);
 }
