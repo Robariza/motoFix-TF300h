@@ -1,0 +1,27 @@
+<div class="table-container">
+  <button class="btn btn-primary mb-3" (click)="openFormModal()">Añadir Nuevo</button>
+  <app-form-admin
+    [isVisible]="isFormVisible"
+    [formConfig]="formConfig"
+    [formData]="formData"
+    (close)="closeFormModal()"
+    (save)="handleSave($event)">
+  </app-form-admin>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{ header }}</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td *ngFor="let header of headers">{{ item[header.toLowerCase()] }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="onEdit(item)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="onDelete(item)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
