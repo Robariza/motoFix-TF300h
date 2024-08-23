@@ -1,17 +1,29 @@
 <div class="nav">
     <div class="navIcon">
-        <ul>
-            <li><i class="fa-solid fa-user"></i></li>
-            <li><i class="fa-solid fa-cart-shopping"></i></li>
-        </ul>
+        <button (click)="toggleLogin()"><i class="fa-solid fa-user"></i></button>
+        <button><i class="fa-solid fa-cart-shopping"></i></button>
     </div>
     <div class="navBar">
         <ul>
             <li><a routerLink="/hpage">CASCOS</a></li>
-            <li>ACCESORIOS</li>
+            <li><a routerLink="/products">ACCESORIOS</a></li>
             <li>INDUMENTARIA</li>
             <li>EQUIPAJE</li>
             <li>ESENCIALES</li>
         </ul>
+    </div>
+</div>
+
+<!-- Formulario Registro -->
+<div *ngIf="isVisibleRegister" class="modal-backdrop" (click)="onBackdropClick($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <app-sign-in [toggleLogin]="toggleLogin.bind(this)"></app-sign-in>
+    </div>
+</div>
+
+<!-- Formulario Ingreso -->
+<div *ngIf="isVisibleLogin" class="modal-backdrop" (click)="onBackdropClick($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <app-log-in [toggleRegister]="toggleRegister.bind(this)"></app-log-in>
     </div>
 </div>

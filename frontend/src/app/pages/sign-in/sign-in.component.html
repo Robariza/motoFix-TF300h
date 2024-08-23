@@ -1,1 +1,66 @@
-<p>sign-in works!</p>
+<div class="loginContainer">
+    <h1>REGISTRATE</h1>
+    <form [formGroup]="signForm">
+        <div class="inputFormRegister">
+            <label>
+                Nombre <br>
+                <input type="text" name="name" id="name">
+            </label>
+            <label>
+                Apellido(s) <br>
+                <input type="text" name="lastName" id="lastName">
+            </label>
+        </div>
+
+        <div class="inputForm">
+            <label>
+                Dirección <br>
+                <input type="text" formControlName="mail" id="mail" required>
+            </label>
+        </div>
+
+        <div class="inputForm">
+            <label>
+                Número telefónico <br>
+                <input type="text" formControlName="phone" id="phone" required>
+            </label>
+        </div>
+
+        <div class="inputForm">
+            <label>
+                Correo <br>
+                <input type="text" formControlName="email" id="email" required>
+            </label>
+        </div>
+
+        <div class="inputForm">
+            <label for="">Contraseña </label>
+            <div class="passwordInput">
+              <input 
+                [type]="showPassword ? 'text' : 'password'" formControlName="password" id="password" required
+              >
+              <button class="button" type="button" (click)="togglePasswordVisibility()">
+                <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+              </button>
+            </div>
+          </div>
+
+        <div class="d-grid gap-1 col-4">
+            <button class="btn" type="submit">Registrate</button>
+        </div>
+
+        <p>¿Ya estás registrado? 
+            <button type="button" (click)="toggleLogin()" class="btnLink">Inicia sesión</button>
+        </p>
+
+        <p>Registrate con:</p>
+
+        <div class="social">
+            <ul>
+                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-google"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+            </ul>
+        </div>
+    </form>
+</div>

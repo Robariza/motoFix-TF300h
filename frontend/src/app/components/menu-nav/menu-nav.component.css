@@ -1,4 +1,4 @@
-.nav{ 
+.nav {
     width: 100vw;
     height: 160px;
     color: var(--colorFont);
@@ -6,7 +6,7 @@
     font-weight: bold;
 }
 
-.navIcon{
+.navIcon {
     width: 100%;
     height: 70%;
 
@@ -18,10 +18,12 @@
     align-items: center;
 }
 
-.navIcon ul {
+.navIcon button {
+    color: white;
+    background-color: var(--colorPrincipal);
+    border: none;
     display: flex;
     list-style: none;
-    gap: 20px;
     margin-right: 50px;
 }
 
@@ -39,18 +41,38 @@
     place-content: center;
 }
 
-.navBar ul{
+.navBar ul {
     display: flex;
     list-style: none;
     margin-top: 15px;
     gap: 20px;
 }
 
-a{
+a {
     color: white;
     text-decoration: none;
 }
 
-a:hover{
+a:hover {
     color: var(--colorContraste);
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+
+.modal-content {
+    position: relative;
+    width: auto;
+    padding: 20px;
+    z-index: 1060;
 }
