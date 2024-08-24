@@ -36,6 +36,6 @@ export class LogInComponent {
 
   // Método para manejar la acción de "Olvidé mi contraseña"
   onForgotPassword() {
-    alert('Password recovery process started.');
+    alert('Inicia el proceso de recuperación de contraseña.');
   }
 }

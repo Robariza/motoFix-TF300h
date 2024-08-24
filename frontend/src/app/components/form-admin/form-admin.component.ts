@@ -11,9 +11,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './form-admin.component.css'
 })
 export class FormAdminComponent {
-  @Input() isVisible: boolean = false; // Verifica el nombre de la propiedad aquí
-  @Input() formConfig: any; // Ajusta el tipo según la configuración de tu formulario
-  @Input() formData: any = {}; // Cambia el tipo según la estructura de tus datos
+  @Input() isVisible: boolean = false;
+  @Input() formConfig: any;
+  @Input() formData: any = {};
 
   @Output() close = new EventEmitter<void>();
   @Output() save = new EventEmitter<any>();
