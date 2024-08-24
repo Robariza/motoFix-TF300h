@@ -80,7 +80,7 @@
 .button {
     width: 20%;
     height: 100%;
-    margin-left: 2%;
+    margin-left: 5px;
 
     background-color: var(--colorSecundario);
     color: white;
