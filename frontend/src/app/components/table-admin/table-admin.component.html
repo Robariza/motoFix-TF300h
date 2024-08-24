@@ -15,9 +15,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of data">
+      <tr *ngFor="let item of data" >
         <td *ngFor="let header of headers">{{ item[header.toLowerCase()] }}</td>
-        <td>
+        <td class="tdButton">
           <button class="btn btn-warning btn-sm" (click)="onEdit(item)">Editar</button>
           <button class="btn btn-danger btn-sm" (click)="onDelete(item)">Eliminar</button>
         </td>

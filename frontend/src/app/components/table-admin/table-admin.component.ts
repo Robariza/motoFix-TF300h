@@ -20,8 +20,8 @@ export class TableAdminComponent {
   @Output() delete = new EventEmitter<TableItem>();
 
   isFormVisible = false;
-  formConfig: any = {}; // Configuración del formulario, ajusta según tu necesidad
-  formData: any = {}; // Datos del formulario, inicializa según tu necesidad
+  formConfig: any = {};
+  formData: any = {};
 
   onEdit(item: TableItem): void {
     this.edit.emit(item);
@@ -40,8 +40,7 @@ export class TableAdminComponent {
   }
 
   handleSave(data: any): void {
-    // Lógica para manejar la data guardada desde el formulario
-    this.data.push(data); // Ejemplo de agregar datos a la tabla
+    this.data.push(data); 
     this.closeFormModal();
   }
 }
