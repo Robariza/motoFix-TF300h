@@ -1,4 +1,6 @@
 import { productModel } from '../models/product.model.js';
+import { categoryModel } from '../models/category.model.js'
+import mongoose from 'mongoose';
 
 // Lógica para manejar la petición GET de productos
 export const getProducts = async (req, res) => {
@@ -19,6 +21,21 @@ export const getProducts = async (req, res) => {
     }
 };
 
+export const getProductById = async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const product = await productModel.findById(id);
+      if (!product) {
+        return res.status(404).json({ message: 'Producto no encontrado' });
+      }
+      return res.status(200).json(product);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  };
+  
+
 // Lógica para manejar la petición POST para crear un nuevo producto
 export const postProduct = async (req, res) => {
     // Obtener los datos del nuevo producto del cuerpo de la petición
@@ -30,8 +47,21 @@ export const postProduct = async (req, res) => {
     }
 
     try {
+        // Verificar si la categoría existe
+        const categoryExists = await categoryModel.findById(category);
+        if (!categoryExists) {
+            return res.status(400).json({ message: 'La categoría proporcionada no existe' });
+        }
+
         // Crear un nuevo producto en la base de datos
-        const newProduct = await productModel.create(req.body);
+        const newProduct = await productModel.create({ 
+            name, 
+            description, 
+            price, 
+            category, 
+            stock, 
+            images 
+        });
 
         // Enviar una respuesta 201 con el nuevo producto creado
         return res.status(201).json(newProduct);
@@ -45,6 +75,11 @@ export const postProduct = async (req, res) => {
 export const deleteProductById = async (req, res) => {
     // Obtener el ID del producto a eliminar de los parámetros de la petición
     const { id } = req.params;
+
+    // Validar que el ID proporcionado sea un ObjectId válido
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ message: 'ID de producto inválido' });
+    }
 
     try {
         // Buscar y eliminar el producto en la base de datos por su ID
@@ -67,6 +102,11 @@ export const deleteProductById = async (req, res) => {
 export const putProductById = async (req, res) => {
     // Obtener el ID del producto a actualizar de los parámetros de la petición
     const { id } = req.params;
+
+    // Validar que el ID proporcionado sea un ObjectId válido
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ message: 'ID de producto inválido' });
+    }
 
     try {
         // Buscar y actualizar el producto en la base de datos por su ID

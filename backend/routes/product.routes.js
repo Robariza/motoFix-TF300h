@@ -1,6 +1,6 @@
 //Importaciones
 import express from 'express';
-import { getProducts, postProduct, deleteProductById, putProductById } from '../controllers/product.controller.js';
+import { getProducts, getProductById, postProduct, deleteProductById, putProductById } from '../controllers/product.controller.js';
 
 // Configuramos el Router de express
 const productsRouter = express.Router();
@@ -10,13 +10,16 @@ const productsRouter = express.Router();
 // Ruta para la petición GET
 productsRouter.get('/', getProducts);
 
+// Ruta para la petición GET por ID
+productsRouter.get('/product/:id', getProductById);
+
 // Ruta para la petición POST
 productsRouter.post('/', postProduct);
 
-// Ruta para la petición DELETE
+// Ruta para la petición DELETE por ID
 productsRouter.delete('/:id', deleteProductById);
 
-// Ruta para la petición PUT
+// Ruta para la petición PUT por ID
 productsRouter.put('/:id', putProductById);
 
 // Exportación rutas

@@ -1,0 +1,78 @@
+.nav {
+    width: 100vw;
+    height: 160px;
+    color: var(--colorFont);
+    font-family: var(--fontFamily);
+    font-weight: bold;
+}
+
+.navIcon {
+    width: 100%;
+    height: 70%;
+
+    background-color: var(--colorPrincipal);
+    border-bottom: solid 5px var(--colorContraste);
+
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.navIcon button {
+    color: white;
+    background-color: var(--colorPrincipal);
+    border: none;
+    display: flex;
+    list-style: none;
+    margin-right: 50px;
+}
+
+.navIcon i {
+    font-size: 20px;
+}
+
+.navBar {
+    width: 100%;
+    height: 30%;
+
+    background-color: var(--colorSecundario);
+
+    display: grid;
+    place-content: center;
+}
+
+.navBar ul {
+    display: flex;
+    list-style: none;
+    margin-top: 15px;
+    gap: 20px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--colorContraste);
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+}
+
+.modal-content {
+    position: relative;
+    width: auto;
+    padding: 20px;
+    z-index: 1060;
+}

@@ -24,7 +24,7 @@ const userSchema = new Schema({
         unique: true, 
         match: [/.+\@.+\..+/, 'Por favor, ingrese un correo válido'] // Valida que el correo tenga el formato adecuado
     },
-    // Rol del usuario (e.g., 'admin', 'user')
+    // Rol del usuario
     role: {
         type: String, 
     },

@@ -5,6 +5,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 // Conexión MDB (módulo)
 import connectionMongo from './config/connectionDB.js';
+// CORS
+import cors from 'cors';
 // ROUTES
 import usersRouter from './routes/user.routes.js';
 import adminsRouter from './routes/admin.routes.js';
@@ -12,7 +14,6 @@ import productsRouter from './routes/product.routes.js';
 import categoryRoutes from './routes/category.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import { loginService } from './services/login.service.js';
-
 // CONFIGURACIÓN DE USO DE IMPORTACIONES
 // express (servidor)
 const app = express();
@@ -24,6 +25,9 @@ const port = process.env.PORT || 6000; // Valor predeterminado 3000 si no está 
 // Conexión MDB
 connectionMongo();
 app.use(express.json());
+
+// Uso de CORS
+app.use(cors());
 
 // Rutas
 app.use('/user', usersRouter);

@@ -1,15 +1,36 @@
 import { Component } from '@angular/core';
-import { TableAdminComponent } from '../../components/table-admin/table-admin.component';
-import { FormAdminComponent } from "../../components/form-admin/form-admin.component";
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [TableAdminComponent, FormAdminComponent, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
 export class AdminComponent {
+  form: FormGroup;
+  showModal = false;
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      name: ['', Validators.required]
+    });
+  }
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+      console.log(this.form.value);
+      this.closeModal();
+    }
+  }
 }

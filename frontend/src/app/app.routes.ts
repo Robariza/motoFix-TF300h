@@ -8,16 +8,23 @@ import { ViewProductComponent } from './pages/view-product/view-product.componen
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminProductsComponent } from './pages/admin-products/admin-products.component';
 import { AdminCategoryComponent } from './pages/admin-category/admin-category.component';
+import { UsersComponent } from './pages/users/users.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'hpage', pathMatch: 'full' },
+    
     {path: 'hpage', component: HomepageComponent},
-    {path: 'products', component: ProductsComponent},
-    {path: 'viewproduct', component: ViewProductComponent},
+    {path: 'product', component: ProductsComponent},
+    {path: 'viewProduct', component: ViewProductComponent},
     {path: 'signin', component: SignInComponent},
     {path: 'login', component: LogInComponent},
     {path: 'admin', component:AdminComponent},
     {path: 'adminProducts', component:AdminProductsComponent},
     {path: 'adminCategory', component:AdminCategoryComponent},
-    {path: '**', component: NotFoundComponent}
+    {path: 'userManagement', component:UsersComponent},
+    {path: 'userProfile', component:UserProfileComponent},
+    {path: 'cart', component:CartComponent},
+    {path: '**', component: NotFoundComponent},
+    {path: '', redirectTo: 'hpage', pathMatch: 'full'},
 ];

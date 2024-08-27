@@ -1,5 +1,12 @@
-<main>
-    <h1 class="titulo">PRODUCTOS</h1>
-    <app-card></app-card>
-</main>
+<h1 class="titulo">PRODUCTOS</h1>
 
+<div class="card" *ngFor="let product of products$ | async" style="width: 18rem;" >
+    <img src="{{product.images}}" class="card-img-top" alt="imagen">
+    <div class="card-body">
+        <div class="card-text">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text"><strong>{{ product.price }}</strong></p>
+        </div>
+        <a href="#" class="btn btn-warning">+cart</a>
+    </div>
+</div>

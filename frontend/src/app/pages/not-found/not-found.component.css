@@ -1,0 +1,81 @@
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #f3f4f6, #e5e7eb);
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+  }
+  
+  .not-found-content {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 28rem;
+    width: 100%;
+  }
+  
+  .not-found-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ef4444;
+    margin-bottom: 0.5rem;
+  }
+  
+  .not-found-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+  }
+  
+  .not-found-text {
+    font-size: 1.125rem;
+    color: #4b5563;
+    margin-bottom: 2rem;
+  }
+  
+  .not-found-button {
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .not-found-button:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
+  }
+  
+  .not-found-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+  }
+  
+  .button-icon {
+    margin-right: 0.5rem;
+  }
+  
+  @media (max-width: 640px) {
+    .not-found-title {
+      font-size: 2.5rem;
+    }
+    .not-found-subtitle {
+      font-size: 1.25rem;
+    }
+    .not-found-text {
+      font-size: 1rem;
+    }
+  }

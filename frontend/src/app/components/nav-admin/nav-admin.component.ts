@@ -5,13 +5,13 @@ import { SignInComponent } from '../../pages/sign-in/sign-in.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-menu-nav',
+  selector: 'app-nav-admin',
   standalone: true,
   imports: [RouterLink, LogInComponent, SignInComponent, CommonModule],
-  templateUrl: './menu-nav.component.html',
-  styleUrl: './menu-nav.component.css'
+  templateUrl: './nav-admin.component.html',
+  styleUrl: './nav-admin.component.css'
 })
-export class MenuNavComponent {
+export class NavAdminComponent {
   isVisibleRegister = false;
   isVisibleLogin = false;
 
