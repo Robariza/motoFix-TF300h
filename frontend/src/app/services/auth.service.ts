@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, BehaviorSubject, of, tap, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +8,16 @@ import { tap, catchError } from 'rxjs/operators';
 export class AuthService {
   private apiUrl = 'http://localhost:3000';
   private tokenSubject = new BehaviorSubject<string | null>(null); // Para gestionar el estado del token
-  public token$ = this.tokenSubject.asObservable(); // Observable para que otros componentes se suscriban al token
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-  // Función para iniciar sesión
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { username, password })
+  // Envia la solicitud de inicio de sesión al backend y, si es exitosa, almacena el token en el tokenSubject y en el almacenamiento localStorage del navegador
+  public login(mail: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { mail, password })
       .pipe(
         tap(response => {
-          if (response.token) {
-            localStorage.setItem('authToken', response.token);
-            this.tokenSubject.next(response.token);
-          }
+          this.tokenSubject.next(response.token);
+          localStorage.setItem('token', response.token);
         }),
         catchError(error => {
           // Manejar el error aquí
@@ -31,14 +27,22 @@ export class AuthService {
       );
   }
 
+  // Verifica el token con el backend
+  verifyToken(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get(`${this.apiUrl}/verify`, { headers });
+  }
+
+  // Devuleve un observable ocn el token actual
+  public getToken(): Observable<string | null> {
+    return this.tokenSubject.asObservable();
+  }
+
   // Función para cerrar sesión
   logout() {
     localStorage.removeItem('authToken'); // Elimina el token de localStorage
     this.tokenSubject.next(null); // Actualiza el tokenSubject a null
-  }
-
-  // Función para verificar si el usuario está autenticado
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('authToken'); // Devuelve true si hay un token en localStorage
   }
 }

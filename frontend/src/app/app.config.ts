@@ -1,5 +1,5 @@
 import { ApplicationConfig, inject } from '@angular/core';
-import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { AuthService } from './services/auth.service';
