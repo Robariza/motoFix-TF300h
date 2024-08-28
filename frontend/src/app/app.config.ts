@@ -7,17 +7,5 @@ import { errorInterceptor } from './shared/error-response.interceptor';
 import { authInterceptor } from './shared/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [AuthService,
-    provideHttpClient(
-      withInterceptors([
-        // Interceptor de autenticación
-        (req, next) => {
-          const authService = inject(AuthService);
-          return authInterceptor(authService)(req, next);
-        },
-        errorInterceptor
-      ])
-    ),
-    provideRouter(routes),
-  ]
+  providers: [AuthService, provideHttpClient(withInterceptors([errorInterceptor, authInterceptor])), provideRouter(routes),]
 };

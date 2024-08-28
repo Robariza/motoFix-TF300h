@@ -5,11 +5,15 @@
       <label>
         Correo <br>
         <input type="text" formControlName="mail" id="mail" required>
+        <!-- Mostrar mensaje de error si el correo no es válido -->
+        <div *ngIf="loginForm.get('mail')?.invalid && loginForm.get('mail')?.touched">
+          <small class="error-text">Correo inválido.</small>
+        </div>
       </label>
     </div>
 
     <div class="inputForm">
-      <label for="">Contraseña </label>
+      <label for="password">Contraseña</label>
       <div class="passwordInput">
         <input 
           [type]="showPassword ? 'text' : 'password'" 
@@ -20,6 +24,10 @@
         <button type="button" (click)="togglePasswordVisibility()">
           <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
         </button>
+      </div>
+      <!-- Mostrar mensaje de error si la contraseña está vacía -->
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        <small class="error-text">La contraseña es requerida.</small>
       </div>
     </div>
 
@@ -35,8 +43,13 @@
       </p>
     </div>
 
+    <!-- Mostrar mensaje de error de autenticación -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
     <div class="d-grid gap-1 col-4">
-      <button class="btn" type="submit">Inicia sesión</button>
+      <button class="btn" type="submit" [disabled]="loginForm.invalid">Inicia sesión</button>
     </div>
     
     <p>¿No estás registrado? <button type="button" class="btnLink">Regístrate</button></p>

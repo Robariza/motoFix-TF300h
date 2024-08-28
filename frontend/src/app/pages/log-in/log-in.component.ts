@@ -8,12 +8,11 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-log-in',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink,SignInComponent, CommonModule],
+  imports: [ReactiveFormsModule, RouterLink, SignInComponent, CommonModule],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
-  
   loginForm: FormGroup;
   showPassword: boolean = false;
   errorMessage: string | null = null;
@@ -31,27 +30,35 @@ export class LogInComponent {
     });
   }
 
-  // Alterna la visibilidad de la contraseña
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
 
-  // Método para manejar el envío del formulario
   onSubmit(): void {
+    this.errorMessage = null; // Limpia mensajes de error anteriores
+  
     if (this.loginForm.invalid) {
       return;
     }
-
+  
     const { mail, password } = this.loginForm.value;
-
+  
     this.authService.login(mail, password).subscribe({
       next: (response) => {
-        // Si el login es exitoso, redirige al usuario
-        this.router.navigate(['/home']);
+        if (response && response.token) { // Verifica que hay un token
+          this.router.navigate(['/hpage']); // Asegúrate de que esta ruta sea correcta
+        } else {
+          this.errorMessage = 'Error inesperado. Intenta de nuevo.';
+        }
       },
       error: (err) => {
-        // Maneja los errores de autenticación
-        this.errorMessage = 'Error de autenticación. Verifica tus credenciales e intenta de nuevo.';
+        if (err.status === 401) {
+          this.errorMessage = 'Credenciales incorrectas. Intenta de nuevo.';
+        } else if (err.status === 0) {
+          this.errorMessage = 'Error de red. Verifica tu conexión e intenta de nuevo.';
+        } else {
+          this.errorMessage = 'Error de autenticación. Verifica tus credenciales e intenta de nuevo.';
+        }
       }
     });
   }
