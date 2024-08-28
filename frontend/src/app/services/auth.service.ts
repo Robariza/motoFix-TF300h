@@ -7,7 +7,7 @@ import { Observable, BehaviorSubject, of, tap, catchError } from 'rxjs';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:3000';
-  private tokenSubject = new BehaviorSubject<string | null>(null); // Para gestionar el estado del token
+  private tokenSubject = new BehaviorSubject<string | null>(null); // Gestiona el estado del token
 
   constructor(public http: HttpClient) { }
 
@@ -20,7 +20,6 @@ export class AuthService {
           localStorage.setItem('token', response.token);
         }),
         catchError(error => {
-          // Manejar el error aquí
           console.error('Login error', error);
           return of(null); // Retornar un observable vacío en caso de error
         })
@@ -35,7 +34,7 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/verify`, { headers });
   }
 
-  // Devuleve un observable ocn el token actual
+  // Devuelve un observable con el token actual
   public getToken(): Observable<string | null> {
     return this.tokenSubject.asObservable();
   }
