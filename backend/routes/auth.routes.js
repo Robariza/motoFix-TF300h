@@ -41,4 +41,39 @@ authRoutes.post('/login', async (req, res) => {
     }
 });
 
+// Ruta de registro (POST)
+authRoutes.post('/signin', async (req, res) => {
+    const { username, password, email, firstName, lastName, address, phone } = req.body;
+
+    try {
+        // Verifica si el correo o nombre de usuario ya están registrados
+        const existingUser = await userModel.findOne({ $or: [{ email }, { username }] });
+        if (existingUser) {
+            return res.status(400).json({ message: 'El correo electrónico o nombre de usuario ya están registrados' });
+        }
+
+        // Hash de la contraseña
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Crea un nuevo usuario
+        const newUser = new userModel({
+            username,
+            password: hashedPassword,
+            email,
+            firstName,
+            lastName,
+            address,
+            phone
+        });
+
+        // Guarda el nuevo usuario en la base de datos
+        await newUser.save();
+
+        // Devuelve una respuesta de éxito
+        return res.status(201).json({ message: 'Usuario registrado con éxito' });
+    } catch (error) {
+        return res.status(500).json({ message: 'Error en el registro', error: error.message });
+    }
+});
+
 export default authRoutes;

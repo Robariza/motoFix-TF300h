@@ -25,6 +25,6 @@
 <!-- Formulario Ingreso -->
 <div *ngIf="isVisibleLogin" class="modal-backdrop" (click)="onBackdropClick($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
-        <app-log-in [toggleRegister]="toggleRegister.bind(this)"></app-log-in>
+        <app-log-in></app-log-in>
     </div>
 </div>

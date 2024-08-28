@@ -14,6 +14,8 @@ import productsRouter from './routes/product.routes.js';
 import categoryRoutes from './routes/category.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import { loginService } from './services/login.service.js';
+import { signinService } from './services/signin.service.js';
+
 // CONFIGURACIÓN DE USO DE IMPORTACIONES
 // express (servidor)
 const app = express();
@@ -35,7 +37,8 @@ app.use('/admin', adminsRouter);
 app.use('/product', productsRouter);
 app.use('/categories', categoryRoutes);
 app.use('/auth', authRoutes);
-app.use('/login', loginService)
+app.use('/login', loginService);
+app.use('/signin', signinService);
 
 // ESCUCHAR SERVIDOR
 app.listen(port, () => {

@@ -1,6 +1,7 @@
 //Importaciones
 import express from 'express';
 import { getProducts, getProductById, postProduct, deleteProductById, putProductById } from '../controllers/product.controller.js';
+import auth from '../middlewares/auth.js'
 
 // Configuramos el Router de express
 const productsRouter = express.Router();
