@@ -43,11 +43,11 @@ authRoutes.post('/login', async (req, res) => {
 
 // Ruta de registro (POST)
 authRoutes.post('/signin', async (req, res) => {
-    const { username, password, email, firstName, lastName, address, phone } = req.body;
+    const { name, lastName, address, phone, email, password } = req.body;
 
     try {
         // Verifica si el correo o nombre de usuario ya están registrados
-        const existingUser = await userModel.findOne({ $or: [{ email }, { username }] });
+        const existingUser = await userModel.findOne({ $or: [{ email }] });
         if (existingUser) {
             return res.status(400).json({ message: 'El correo electrónico o nombre de usuario ya están registrados' });
         }
@@ -57,13 +57,13 @@ authRoutes.post('/signin', async (req, res) => {
 
         // Crea un nuevo usuario
         const newUser = new userModel({
-            username,
-            password: hashedPassword,
-            email,
-            firstName,
+            name,
             lastName,
             address,
-            phone
+            phone,
+            email,
+            password: hashedPassword,
+            
         });
 
         // Guarda el nuevo usuario en la base de datos

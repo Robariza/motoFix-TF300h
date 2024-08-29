@@ -6,14 +6,15 @@ import { Observable, BehaviorSubject, of, tap, catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+
   private apiUrl = 'http://localhost:3000';
   private tokenSubject = new BehaviorSubject<string | null>(null); // Gestiona el estado del token
 
   constructor(public http: HttpClient) { }
 
   // Envia la solicitud de inicio de sesión al backend y, si es exitosa, almacena el token en el tokenSubject y en el almacenamiento localStorage del navegador
-  public login(mail: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { mail, password })
+  public login(password: string, email: string ): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, {  password, email   })
       .pipe(
         tap(response => {
           this.tokenSubject.next(response.token);
@@ -31,7 +32,7 @@ export class AuthService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-    return this.http.get(`${this.apiUrl}/verify`, { headers });
+    return this.http.get(`${this.apiUrl}/auth`, { headers });
   }
 
   // Devuelve un observable con el token actual

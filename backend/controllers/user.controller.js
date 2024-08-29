@@ -24,12 +24,12 @@ export const getUsers = async (req, res) => {
 // Lógica para manejar las peticiones POST para crear un nuevo usuario
 export const postUser = async (req, res) => {
     // Extrae los datos del usuario del cuerpo de la solicitud
-    const { username, password, email, firstName, lastName, address, phone } = req.body;
+    const { username, lastName, address, phone, email, password } = req.body;
 
     // Verifica si todos los campos requeridos están presentes
-    if (!username || !password || !email || !firstName || !lastName || !address || !phone) {
+    if (!username || !lastName ||  !address|| !phone  || !email || !password  ) {
         // Si falta algún campo, responde con un error 400
-        return res.status(400).json({ message: 'Debe ingresar todos los campos requeridos: nombre de usuario, contraseña, correo, nombres, apellidos, dirección y número de contacto' });
+        return res.status(400).json({ message: 'Debe ingresar todos los campos requeridos: nombre, contraseña, correo, apellidos, dirección y número de contacto' });
     }
 
     try {
@@ -39,12 +39,11 @@ export const postUser = async (req, res) => {
         // Crea un nuevo usuario en la base de datos con la contraseña encriptada
         const newUser = await userModel.create({
             username,
-            password: hashedPassword,
-            email,
-            firstName,
             lastName,
             address,
-            phone
+            phone,
+            email,
+            password: hashedPassword,
         });
 
         // Responde con el nuevo usuario creado y un código de estado 201 (creado)

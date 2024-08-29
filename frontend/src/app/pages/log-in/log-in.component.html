@@ -4,9 +4,8 @@
     <div class="inputForm">
       <label>
         Correo <br>
-        <input type="text" formControlName="mail" id="mail" required>
-        <!-- Mostrar mensaje de error si el correo no es válido -->
-        <div *ngIf="loginForm.get('mail')?.invalid && loginForm.get('mail')?.touched">
+        <input type="text" formControlName="email" id="email" required>
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
           <small class="error-text">Correo inválido.</small>
         </div>
       </label>
@@ -25,7 +24,6 @@
           <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
         </button>
       </div>
-      <!-- Mostrar mensaje de error si la contraseña está vacía -->
       <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
         <small class="error-text">La contraseña es requerida.</small>
       </div>
@@ -43,7 +41,6 @@
       </p>
     </div>
 
-    <!-- Mostrar mensaje de error de autenticación -->
     <div *ngIf="errorMessage" class="error-message">
       {{ errorMessage }}
     </div>
@@ -52,7 +49,7 @@
       <button class="btn" type="submit" [disabled]="loginForm.invalid">Inicia sesión</button>
     </div>
     
-    <p>¿No estás registrado? <button type="button" class="btnLink">Regístrate</button></p>
+    <p>¿No estás registrado? <button type="button" class="btnLink" (click)="toggleRegister()">Regístrate</button></p>
     
     <p>Inicia sesión con:</p>
 

@@ -6,11 +6,11 @@ import jwtUtils from '../lib/jwt.js';
 // Función para manejar el registro de un nuevo usuario
 export const signinService = async (req, res) => {
     // Extrae los datos del cuerpo de la solicitud
-    const { username, password, email, firstName, lastName, address, phone } = req.body;
+    const { username, lastName, address, phone, email, password } = req.body;
 
     try {
         // Verifica si ya existe un usuario con el mismo correo electrónico o nombre de usuario
-        const existingUser = await userModel.findOne({ $or: [{ email }, { username }] });
+        const existingUser = await userModel.findOne({ $or: [{ email }] });
         if (existingUser) {
             return res.status(400).json({
                 status: '400',
@@ -24,12 +24,11 @@ export const signinService = async (req, res) => {
         // Crea un nuevo usuario con los datos proporcionados
         const newUser = new userModel({
             username,
-            password: hashedPassword,
-            email,
-            firstName,
             lastName,
             address,
-            phone
+            phone,
+            email,
+            password: hashedPassword,
         });
 
         // Guarda el nuevo usuario en la base de datos
@@ -38,7 +37,7 @@ export const signinService = async (req, res) => {
         // Prepara el payload que se incluirá en el token JWT (opcional)
         const payload = {
             id: newUser._id.toString(), // Convierte el ID del usuario a string para el payload
-            username: newUser.username,
+            name: newUser.username,
             role: newUser.role
         };
 

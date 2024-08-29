@@ -13,8 +13,9 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [
-    
+
     {path: 'hpage', component: HomepageComponent},
+    {path: '', redirectTo: 'hpage', pathMatch: 'full'},
     {path: 'product', component: ProductsComponent},
     {path: 'viewProduct', component: ViewProductComponent},
     {path: 'signin', component: SignInComponent},
@@ -25,6 +26,6 @@ export const routes: Routes = [
     {path: 'userManagement', component:UsersComponent},
     {path: 'userProfile', component:UserProfileComponent},
     {path: 'cart', component:CartComponent},
-    {path: '**', component: NotFoundComponent},
-    {path: '', redirectTo: 'hpage', pathMatch: 'full'},
+    {path: '**', component: NotFoundComponent}
+
 ];

@@ -12,7 +12,7 @@ import { User } from '../../interfaces/user';
 })
 export class UserProfileComponent implements OnInit {
   user: User = {
-    username: 'johndoe',
+    name: 'johndoe',
     email: 'johndoe@example.com',
     firstName: 'John',
     lastName: 'Doe',

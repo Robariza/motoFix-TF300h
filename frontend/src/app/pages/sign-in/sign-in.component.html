@@ -1,21 +1,21 @@
 <div class="loginContainer">
     <h1>REGISTRATE</h1>
-    <form [formGroup]="signForm">
+    <form [formGroup]="signForm" (ngSubmit)="onSubmit()">
         <div class="inputFormRegister">
             <label>
                 Nombre <br>
-                <input type="text" name="name" id="name">
+                <input type="text" formControlName="username" id="username">
             </label>
             <label>
                 Apellido(s) <br>
-                <input type="text" name="lastName" id="lastName">
+                <input type="text" formControlName="lastName" id="lastName">
             </label>
         </div>
 
         <div class="inputForm">
             <label>
                 Dirección <br>
-                <input type="text" formControlName="mail" id="mail" required>
+                <input type="text" formControlName="address" id="address" required>
             </label>
         </div>
 
@@ -46,14 +46,14 @@
           </div>
 
         <div class="d-grid gap-1 col-4">
-            <button class="btn" type="submit">Registrate</button>
+            <button class="btn" type="submit">Regístrate</button>
         </div>
 
         <p>¿Ya estás registrado? 
             <button type="button" (click)="toggleLogin()" class="btnLink">Inicia sesión</button>
         </p>
 
-        <p>Registrate con:</p>
+        <p>Regístrate con:</p>
 
         <div class="social">
             <ul>

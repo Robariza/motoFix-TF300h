@@ -9,7 +9,6 @@ const userSchema = new Schema({
     username: {
         type: String, // El campo es de tipo cadena de texto
         required: true, // Es obligatorio
-        unique: true, // Debe ser único en la colección
         trim: true // Elimina espacios en blanco al principio y al final
     },
     // Contraseña del usuario
@@ -37,11 +36,6 @@ const userSchema = new Schema({
     updatedAt: {
         type: Date, 
         default: Date.now 
-    },
-    // Primer nombre del usuario
-    firstName: {
-        type: String, 
-        trim: true 
     },
     // Apellido del usuario
     lastName: {

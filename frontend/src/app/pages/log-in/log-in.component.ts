@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { SignInComponent } from '../sign-in/sign-in.component';
@@ -13,6 +13,10 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
+
+  @Input() toggleRegister: () => void = () => {};
+  @Output() closeModal = new EventEmitter<void>();
+
   loginForm: FormGroup;
   showPassword: boolean = false;
   errorMessage: string | null = null;
@@ -22,9 +26,8 @@ export class LogInComponent {
     private authService: AuthService,
     private router: Router
   ) {
-    // Inicializa el formulario con validaciones
     this.loginForm = this.fb.group({
-      mail: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       rememberUser: [false]
     });
@@ -41,12 +44,15 @@ export class LogInComponent {
       return;
     }
   
-    const { mail, password } = this.loginForm.value;
+    const { email, password } = this.loginForm.value;
+
+    console.log(password, email);
   
-    this.authService.login(mail, password).subscribe({
+    this.authService.login(password, email).subscribe({
       next: (response) => {
         if (response && response.token) { // Verifica que hay un token
-          this.router.navigate(['/hpage']); // Asegúrate de que esta ruta sea correcta
+          this.closeModal.emit(); // Cierra el modal
+          this.router.navigate(['/hpage']); // Navega a la ruta de inicio
         } else {
           this.errorMessage = 'Error inesperado. Intenta de nuevo.';
         }

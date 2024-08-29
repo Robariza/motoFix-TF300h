@@ -15,16 +15,16 @@
     </div>
 </div>
 
-<!-- Formulario Registro -->
+<!-- Modal de Registro -->
 <div *ngIf="isVisibleRegister" class="modal-backdrop" (click)="onBackdropClick($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
-        <app-sign-in [toggleLogin]="toggleLogin.bind(this)"></app-sign-in>
+        <app-sign-in [toggleLogin]="toggleLogin.bind(this)" (closeModal)="isVisibleRegister = false"></app-sign-in>
     </div>
 </div>
 
-<!-- Formulario Ingreso -->
+<!-- Modal de Inicio de Sesión -->
 <div *ngIf="isVisibleLogin" class="modal-backdrop" (click)="onBackdropClick($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
-        <app-log-in></app-log-in>
+        <app-log-in [toggleRegister]="toggleRegister.bind(this)" (closeModal)="isVisibleLogin = false"></app-log-in>
     </div>
 </div>

@@ -31,7 +31,7 @@ export const loginService = async (req, res) => {
         // Prepara el payload que se incluirá en el token JWT
         const payload = {
             id: user._id.toString(), // Convierte el ID del usuario a string para el payload
-            username: user.username,
+            name: user.username,
             role: user.role
         };
 
