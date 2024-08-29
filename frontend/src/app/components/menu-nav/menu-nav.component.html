@@ -1,30 +1,38 @@
 <div class="nav">
     <div class="navIcon">
-        <button (click)="toggleLogin()"><i class="fa-solid fa-user"></i></button>
-        <button><a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i></a></button>
+      <!-- Icono de usuario o inicio de sesión -->
+      <button *ngIf="!isAuthenticated" (click)="toggleLogin()"><i class="fa-solid fa-user"></i></button>
+      <!-- Icono de cierre de sesión, visible solo si el usuario está autenticado -->
+      <button *ngIf="isAuthenticated" (click)="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </button>
+      <!-- Icono de carrito -->
+      <button><a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i></a></button>
+      
     </div>
     <div class="navBar">
-        <ul>
-            <li><a routerLink="/hpage">CASCOS</a></li>
-            <li><a routerLink="/product">ACCESORIOS</a></li>
-            <li><a routerLink="/admin">INDUMENTARIA</a></li>
-            <li><a routerLink="/adminProducts">EQUIPAJE</a></li>
-            <li><a routerLink="/viewProduct">ESENCIALES</a></li>
-            <li><a routerLink="/userManagement">userManagement</a></li>
-        </ul>
+      <ul>
+        <li><a routerLink="/hpage">CASCOS</a></li>
+        <li><a routerLink="/product">ACCESORIOS</a></li>
+        <li><a routerLink="/admin">INDUMENTARIA</a></li>
+        <li><a routerLink="/adminProducts">EQUIPAJE</a></li>
+        <li><a routerLink="/viewProduct">ESENCIALES</a></li>
+        <li><a routerLink="/userManagement">userManagement</a></li>
+      </ul>
     </div>
-</div>
-
-<!-- Modal de Registro -->
-<div *ngIf="isVisibleRegister" class="modal-backdrop" (click)="onBackdropClick($event)">
+  </div>
+  
+  <!-- Formulario Registro -->
+  <div *ngIf="isVisibleRegister" class="modal-backdrop" (click)="onBackdropClick($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
-        <app-sign-in [toggleLogin]="toggleLogin.bind(this)" (closeModal)="isVisibleRegister = false"></app-sign-in>
+      <app-sign-in [toggleLogin]="toggleLogin.bind(this)" (closeModal)="isVisibleRegister = false"></app-sign-in>
     </div>
-</div>
-
-<!-- Modal de Inicio de Sesión -->
-<div *ngIf="isVisibleLogin" class="modal-backdrop" (click)="onBackdropClick($event)">
+  </div>
+  
+  <!-- Formulario Ingreso -->
+  <div *ngIf="isVisibleLogin" class="modal-backdrop" (click)="onBackdropClick($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
-        <app-log-in [toggleRegister]="toggleRegister.bind(this)" (closeModal)="isVisibleLogin = false"></app-log-in>
+      <app-log-in [toggleRegister]="toggleRegister.bind(this)" (closeModal)="isVisibleLogin = false"></app-log-in>
     </div>
-</div>
+  </div>
+  

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { LogInComponent } from '../../pages/log-in/log-in.component';
 import { SignInComponent } from '../../pages/sign-in/sign-in.component';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-menu-nav',
@@ -14,6 +15,14 @@ import { CommonModule } from '@angular/common';
 export class MenuNavComponent {
   isVisibleRegister = false;
   isVisibleLogin = false;
+  isAuthenticated = false;
+
+  constructor(private authService: AuthService, private router: Router) {
+    // Verifica el estado de autenticación al inicializar
+    this.authService.getToken().subscribe(token => {
+      this.isAuthenticated = !!token; // Actualiza el estado basado en el token
+    });
+  }
 
   toggleRegister(): void {
     this.isVisibleRegister = !this.isVisibleRegister;
@@ -29,4 +38,11 @@ export class MenuNavComponent {
     this.isVisibleRegister = false;
     this.isVisibleLogin = false;
   }
+
+  logout(): void {
+    this.authService.logout();
+    this.isAuthenticated = false;
+    this.router.navigate(['/hpage']);
+  }
 }
+
