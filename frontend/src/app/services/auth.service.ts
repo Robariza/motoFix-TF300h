@@ -1,48 +1,64 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Observable, BehaviorSubject, of, tap, catchError } from 'rxjs';
+import { jwtDecode } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   private apiUrl = 'http://localhost:3000';
-  private tokenSubject = new BehaviorSubject<string | null>(null); // Gestiona el estado del token
+  private tokenSubject = new BehaviorSubject<string | null>(null);
+  private roleSubject = new BehaviorSubject<string | null>(null); 
 
-  constructor(public http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.tokenSubject.next(token);
+      this.setUserRoleFromToken(token); 
+    }
+  }
 
-  // Envia la solicitud de inicio de sesión al backend y, si es exitosa, almacena el token en el tokenSubject y en el almacenamiento localStorage del navegador
-  public login(password: string, email: string ): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, {  password, email   })
+  login(password: string, email: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { password, email })
       .pipe(
         tap(response => {
-          this.tokenSubject.next(response.token);
-          localStorage.setItem('token', response.token);
+          const token = response.token;
+          this.tokenSubject.next(token);
+          localStorage.setItem('token', token);
+          this.setUserRoleFromToken(token);
         }),
         catchError(error => {
-          console.error('Login error', error);
-          return of(null); // Retornar un observable vacío en caso de error
+          console.error('Error al iniciar sesión', error);
+          return of(null);
         })
       );
   }
 
-  // Verifica el token con el backend
-  verifyToken(token: string): Observable<any> {
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-    return this.http.get(`${this.apiUrl}/auth`, { headers });
+  getToken(): Observable<string | null> {
+    const token = localStorage.getItem('token');
+    return of(token);
+  }
+  
+
+  getUserRole(): Observable<string | null> {
+    return this.roleSubject.asObservable(); 
   }
 
-  // Devuelve un observable con el token actual
-  public getToken(): Observable<string | null> {
-    return this.tokenSubject.asObservable();
+  private setUserRoleFromToken(token: string): void {
+    try {
+      const decoded: any = jwtDecode(token);
+      const role = decoded.role || null;
+      this.roleSubject.next(role); 
+    } catch (error) {
+      console.error('Error decodificando el token', error);
+      this.roleSubject.next(null);
+    }
   }
 
-  // Función para cerrar sesión
   logout() {
-    localStorage.removeItem('authToken'); // Elimina el token de localStorage
-    this.tokenSubject.next(null); // Actualiza el tokenSubject a null
+    localStorage.removeItem('token');
+    this.tokenSubject.next(null);
+    this.roleSubject.next(null);
   }
 }

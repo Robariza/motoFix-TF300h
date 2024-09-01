@@ -1,21 +1,19 @@
-import { HttpRequest, HttpHandlerFn } from '@angular/common/http';
+import { HttpRequest, HttpHandlerFn, HttpEvent } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { tap, switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
-export function authInterceptor(request: HttpRequest<any>, next: HttpHandlerFn) {
+// El interceptor debe ser una función con la firma correcta para HttpInterceptorFn
+export function authInterceptor(request: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> {
   const authService = inject(AuthService);
 
   return authService.getToken().pipe(
-    tap((token: string | null) => {
-      if (token) {
-        request = request.clone({
-          setHeaders: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-      }
-    }),
-    switchMap(() => next(request))
+    switchMap(token => {
+      // Clonar la solicitud y agregar el encabezado de autorización si hay un token
+      const authRequest = token ? 
+        request.clone({ setHeaders: { Authorization: `Bearer ${token}` } }) : 
+        request;
+      return next(authRequest);
+    })
   );
 }

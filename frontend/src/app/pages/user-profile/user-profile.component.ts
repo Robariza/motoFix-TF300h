@@ -12,7 +12,8 @@ import { User } from '../../interfaces/user';
 })
 export class UserProfileComponent implements OnInit {
   user: User = {
-    name: 'johndoe',
+    _id: 'df4sd5f4sf45sdf5sd4f85sfsdf5s4f5s',
+    username: 'johndoe',
     email: 'johndoe@example.com',
     firstName: 'John',
     lastName: 'Doe',

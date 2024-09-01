@@ -1,4 +1,7 @@
+// Guards, routes
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
+
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -17,13 +20,13 @@ export const routes: Routes = [
     {path: 'hpage', component: HomepageComponent},
     {path: '', redirectTo: 'hpage', pathMatch: 'full'},
     {path: 'product', component: ProductsComponent},
-    {path: 'viewProduct', component: ViewProductComponent},
+    {path: 'product/:id', component: ViewProductComponent},
     {path: 'signin', component: SignInComponent},
     {path: 'login', component: LogInComponent},
-    {path: 'admin', component:AdminComponent},
-    {path: 'adminProducts', component:AdminProductsComponent},
-    {path: 'adminCategory', component:AdminCategoryComponent},
-    {path: 'userManagement', component:UsersComponent},
+    {path: 'admin', component:AdminComponent, canActivate:[authGuard]},
+    {path: 'adminProducts', component:AdminProductsComponent, canActivate:[authGuard]},
+    {path: 'adminCategory', component:AdminCategoryComponent, canActivate:[authGuard]},
+    {path: 'userManagement', component:UsersComponent, canActivate:[authGuard]},
     {path: 'userProfile', component:UserProfileComponent},
     {path: 'cart', component:CartComponent},
     {path: '**', component: NotFoundComponent}

@@ -1,6 +1,7 @@
 export interface User {
+    _id:string
     // Nombre de usuario del usuario
-    name: string;
+    username: string;
     // Contraseña del usuario
     email: string;
     // Primer nombre del usuario (opcional)

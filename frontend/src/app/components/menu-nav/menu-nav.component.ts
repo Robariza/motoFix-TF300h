@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { LogInComponent } from '../../pages/log-in/log-in.component';
 import { SignInComponent } from '../../pages/sign-in/sign-in.component';
@@ -10,17 +10,23 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [RouterLink, LogInComponent, SignInComponent, CommonModule],
   templateUrl: './menu-nav.component.html',
-  styleUrl: './menu-nav.component.css'
+  styleUrls: ['./menu-nav.component.css']
 })
-export class MenuNavComponent {
+export class MenuNavComponent implements OnInit {
   isVisibleRegister = false;
   isVisibleLogin = false;
   isAuthenticated = false;
+  isAdmin = false;
 
-  constructor(private authService: AuthService, private router: Router) {
-    // Verifica el estado de autenticación al inicializar
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
     this.authService.getToken().subscribe(token => {
-      this.isAuthenticated = !!token; // Actualiza el estado basado en el token
+      this.isAuthenticated = !!token;
+    });
+
+    this.authService.getUserRole().subscribe(role => {
+      this.isAdmin = role === 'admin';
     });
   }
 
@@ -42,7 +48,7 @@ export class MenuNavComponent {
   logout(): void {
     this.authService.logout();
     this.isAuthenticated = false;
+    this.isAdmin = false;
     this.router.navigate(['/hpage']);
   }
 }
-

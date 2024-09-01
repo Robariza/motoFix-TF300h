@@ -12,7 +12,7 @@ adminsRouter.get('/', auth('admin'), getAdmins);
 // Usa el middleware de autenticación 'auth' que requiere el rol 'admin'
 
 // Ruta para la petición POST
-adminsRouter.post('/', postAdmin);
+adminsRouter.post('/', auth('admin'), postAdmin);
 
 // Ruta para la petición PUT
 adminsRouter.put('/:id', auth('admin'), updateAdminById);

@@ -12,16 +12,16 @@ const productsRouter = express.Router();
 productsRouter.get('/', getProducts);
 
 // Ruta para la petición GET por ID
-productsRouter.get('/product/:id', getProductById);
+productsRouter.get('/:id', getProductById);
 
 // Ruta para la petición POST
-productsRouter.post('/', postProduct);
+productsRouter.post('/', auth('admin'), postProduct);
 
 // Ruta para la petición DELETE por ID
-productsRouter.delete('/:id', deleteProductById);
+productsRouter.delete('/:id', auth('admin'), deleteProductById);
 
 // Ruta para la petición PUT por ID
-productsRouter.put('/:id', putProductById);
+productsRouter.put('/:id', auth('admin'), putProductById);
 
 // Exportación rutas
 export default productsRouter;

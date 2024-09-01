@@ -1,33 +1,34 @@
-<main>
+<main *ngIf="product">
     <div class="viewproduct">
-        <div class="img">
-            <img src="assets/marcasAliadas/givi.png" alt="product">
+      <div class="img">
+        <img [src]="product.images" alt="product">
+      </div>
+      <div class="description">
+        <h1 class="title">{{ product.name }}</h1>
+        <div class="price">
+          <h5>Precio</h5>
+          <p>{{ product.price | currency }}</p>
         </div>
-        <div class="description">
-            <h1 class="title">nameProduct</h1>
-            <div class="price">
-                <h5>precio</h5>
-                <p>$price</p>
-            </div>
-            <p class="descriptionProduct">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus temporibus error pariatur facilis doloribus nam hic quas ipsam inventore! Maiores omnis consectetur nostrum laudantium, soluta quibusdam? Sequi tenetur hic tempore.
-            In qui ut architecto recusandae quo quaerat natus minus nihil incidunt similique enim nemo temporibus nisi quis, iure corporis, ullam, aliquam aliquid beatae maxime! Sint doloremque est laborum impedit sed.
-            </p>
-            <div class="size">
-                <h5>Talla *</h5>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Selecciona la talla</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="quantity">
-                <h5>Cantidad *</h5>
-                <app-quantity-input></app-quantity-input>
-            </div>
-            <div class="d-grid gap-1 col-4">
-                <button class="btn" type="button">AÑADIR AL CARRITO</button>
-            </div>
+        <p class="descriptionProduct">{{ product.description }}</p>
+        <div class="size">
+          <h5>Talla *</h5>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Selecciona la talla</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
         </div>
+        <div class="quantity">
+          <h5>Cantidad *</h5>
+          <app-quantity-input></app-quantity-input>
+        </div>
+        <div class="d-grid gap-1 col-4">
+          <button class="btn" type="button">AÑADIR AL CARRITO</button>
+        </div>
+      </div>
     </div>
-</main>
+  </main>
+  
+  <p *ngIf="!product">El producto no se ha encontrado.</p>
+  

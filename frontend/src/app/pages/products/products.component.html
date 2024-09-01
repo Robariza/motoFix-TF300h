@@ -1,14 +1,14 @@
 <h1 class="titulo">PRODUCTOS</h1>
 
 <body>
-<div class="card" *ngFor="let product of products$ | async" style="width: 18rem;" >
+  <div class="card" *ngFor="let product of products$ | async" style="width: 18rem;" (click)="viewProduct(product._id)">
     <img src="{{product.images}}" class="card-img-top" alt="imagen">
     <div class="card-body">
-        <div class="card-text">
-            <h5 class="card-title animate-slide">{{ product.name }}</h5>
-            <p >Precio : {{ product.price | currency }}</p>
-        </div>
-        <a href="#" class="btn btn-warning">+cart</a>
+      <div class="card-text">
+        <h5 class="card-title animate-slide">{{ product.name }}</h5>
+        <p>Precio : {{ product.price | currency }}</p>
+      </div>
+      <a href="#" class="btn btn-warning">+cart</a>
     </div>
-</div>
+  </div>
 </body>

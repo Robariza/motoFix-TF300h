@@ -25,8 +25,10 @@ const userSchema = new Schema({
     },
     // Rol del usuario
     role: {
-        type: String, 
-    },
+        type: String,
+        enum: ['user', 'admin'], // Solo 'user' o 'admin' son valores válidos
+        default: 'user' // Valor por defecto
+    },        
     // Fecha de creación del documento
     createdAt: {
         type: Date, // El campo es de tipo fecha
