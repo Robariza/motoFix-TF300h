@@ -22,9 +22,6 @@ main {
 
 .img img {
     width: 50%;
-    height: 100%;
-
-    margin-top: 225px;
     object-fit: fill;
 }
 

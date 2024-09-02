@@ -30,6 +30,7 @@ export class SignInComponent {
       address: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       email: ['', [Validators.required, Validators.email]],
+      role:['', [Validators.required]],
       password: ['', Validators.required]
     });
   }
