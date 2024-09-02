@@ -7,9 +7,9 @@ import { Observable, catchError, of } from 'rxjs';
 })
 export class AdminService {
 
-  private apiUrl = 'http://localhost:3000/admin'; 
+  private apiUrl = 'http://localhost:3000/admin';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Obtener todos los elementos
   getAllItems(): Observable<any> {

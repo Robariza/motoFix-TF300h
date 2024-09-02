@@ -18,11 +18,11 @@
     align-items: center;
 }
 
-.buttonContainer{
+.buttonContainer {
     display: flex;
 }
 
-.navIcon img{
+.navIcon img {
     width: 250px;
     height: 100%;
     margin-left: 20px;
@@ -85,4 +85,54 @@ a {
     width: auto;
     padding: 20px;
     z-index: 1060;
+}
+
+/* iPhone 12 */
+@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
+    .nav {
+        height: auto;
+        font-size: 14px;
+    }
+
+    .navIcon {
+        height: 60%;
+        padding: 10px;
+    }
+
+    .buttonContainer {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .navIcon img {
+        width: 200px;
+        height: auto;
+        margin-left: 10px;
+    }
+
+    .navIcon button {
+        margin-right: 20px;
+    }
+
+    .navIcon i {
+        font-size: 18px;
+    }
+
+    .navBar {
+        height: auto;
+    }
+
+    .navBar ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .navBar ul a {
+        font-size: 14px;
+    }
 }

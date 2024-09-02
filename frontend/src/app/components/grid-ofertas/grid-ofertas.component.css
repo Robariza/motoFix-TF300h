@@ -1,15 +1,15 @@
 .card {
-    border: none; 
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .card-img-top {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .card:hover .card-img-top {
-    transform: scale(1.1); 
-  }
+  border: none;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-img-top {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.1);
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../interfaces/products';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit {
 
   products$: Observable<Product[]> | undefined;
 
-  constructor(private productsService: ProductsService, private router: Router) {}
+  constructor(private productsService: ProductsService, private router: Router) { }
 
   ngOnInit() {
     this.products$ = this.productsService.getProducts();
@@ -24,6 +24,6 @@ export class ProductsComponent implements OnInit {
 
   // Método para manejar la selección de un producto
   viewProduct(id: string) {
-    this.router.navigate(['/product', id]); 
+    this.router.navigate(['/product', id]);
   }
 }

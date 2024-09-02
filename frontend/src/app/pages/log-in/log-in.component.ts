@@ -14,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LogInComponent {
 
-  @Input() toggleRegister: () => void = () => {};
+  @Input() toggleRegister: () => void = () => { };
   @Output() closeModal = new EventEmitter<void>();
 
   loginForm: FormGroup;
@@ -39,15 +39,13 @@ export class LogInComponent {
 
   onSubmit(): void {
     this.errorMessage = null; // Limpia mensajes de error anteriores
-  
+
     if (this.loginForm.invalid) {
       return;
     }
-  
+
     const { email, password } = this.loginForm.value;
 
-    console.log(password, email);
-  
     this.authService.login(password, email).subscribe({
       next: (response) => {
         if (response && response.token) { // Verifica que hay un token

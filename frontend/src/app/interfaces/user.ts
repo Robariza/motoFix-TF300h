@@ -1,5 +1,5 @@
 export interface User {
-    _id:string
+    _id: string
     // Nombre de usuario del usuario
     username: string;
     // Contraseña del usuario

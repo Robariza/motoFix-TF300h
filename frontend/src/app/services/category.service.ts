@@ -9,7 +9,7 @@ import { Category } from '../interfaces/category';
 export class CategoryService {
   private apiUrl = 'http://localhost:3000/categories';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.apiUrl).pipe(
@@ -52,9 +52,6 @@ export class CategoryService {
       // Error del lado del servidor
       errorMessage = `Código de estado: ${error.status}\nMensaje: ${error.message}`;
     }
-
-    // Log o manejo adicional del error
-    console.error(errorMessage);
 
     // Retornar un observable con un mensaje de error
     return throwError(() => new Error(errorMessage));

@@ -1,28 +1,27 @@
 .quantityInput {
-    display: flex;
-    width: 120px;
-    height: 40px;
-    margin-left: 20px;
-    border: solid 2px var(--colorSecundario);
-    border-radius: 6px;
+  display: flex;
+  width: 120px;
+  height: 40px;
+  margin-left: 20px;
+  border: solid 2px var(--colorSecundario);
+  border-radius: 6px;
 }
-  
-  .quantityInput button {
-    width: 20%;
-    height: 100%;
-    background-color: white;
-    color: var(--colorSecundario);
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .quantityInput input {
-    width: 60%;
-    height: 100%;
-    border: none;
 
-    text-align: center;
-    font-size: 15px;
-  }
-  
+.quantityInput button {
+  width: 20%;
+  height: 100%;
+  background-color: white;
+  color: var(--colorSecundario);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.quantityInput input {
+  width: 60%;
+  height: 100%;
+  border: none;
+
+  text-align: center;
+  font-size: 15px;
+}

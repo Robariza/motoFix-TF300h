@@ -1,11 +1,11 @@
 <div class="user-profile">
   <h1>PERFIL DE USUARIO</h1>
-  
+
   <!-- Sección de carga o error -->
   <div *ngIf="!user">
     <p>Cargando información del usuario...</p>
   </div>
-  
+
   <!-- Información del usuario -->
   <section *ngIf="user" class="user-info">
     <h2>Información Personal</h2>
@@ -32,7 +32,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Pedidos realizados por el usuario -->
   <section *ngIf="user" class="user-orders">
     <h2>Pedidos Realizados</h2>

@@ -1,4 +1,4 @@
-.footer{
+.footer {
     width: 100vw;
     height: 150px;
     background-color: var(--colorPrincipal);
@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.linkFooter{
+.linkFooter {
     width: 50%;
     height: 100%;
     padding: 20px;
@@ -18,16 +18,16 @@
     border-right: solid 3px #F4CE14;
 }
 
-.linkFooter h3{
+.linkFooter h3 {
     font-size: 20px;
 }
 
-.linkFooter ul{
+.linkFooter ul {
     list-style: none;
     font-size: 12px;
 }
 
-.iconFooter{
+.iconFooter {
     width: 50%;
     height: 100%;
     font-size: 12px;
@@ -37,13 +37,46 @@
     align-items: center;
 }
 
-.iconFooter h3{
+.iconFooter h3 {
     font-size: 15px;
 }
 
-.iconFooter ul{
+.iconFooter ul {
     list-style: none;
     display: flex;
     gap: 15px;
     font-size: 30px;
+}
+
+/* iPhone 12 */
+@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
+    .footer {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .linkFooter,
+    .iconFooter {
+        width: 100%;
+        border-right: none;
+        border-top: solid 1px #F4CE14;
+        border-bottom: solid 1px #F4CE14;
+        padding: 10px;
+    }
+
+    .linkFooter h3,
+    .iconFooter h3 {
+        font-size: 15px;
+    }
+
+    .linkFooter ul,
+    .iconFooter ul {
+        font-size: 10px;
+    }
+
+    .iconFooter ul {
+        gap: 8px;
+        font-size: 24px;
+    }
 }

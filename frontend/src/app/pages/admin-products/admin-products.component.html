@@ -44,7 +44,6 @@
     <table class="table table-striped">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Nombre del producto</th>
             <th>Descripción</th>
             <th>Precio</th>
@@ -57,7 +56,6 @@
         </thead>
         <tbody>
           <tr *ngFor="let product of products">
-            <td>{{ product._id }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.description }}</td>
             <td>{{ product.price }}</td>

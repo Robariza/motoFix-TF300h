@@ -18,7 +18,7 @@ export class MenuNavComponent implements OnInit {
   isAuthenticated = false;
   isAdmin = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.authService.getToken().subscribe(token => {

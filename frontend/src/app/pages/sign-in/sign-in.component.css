@@ -41,13 +41,13 @@
     right: -60px;
 }
 
-.inputFormRegister{
+.inputFormRegister {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
 
-.inputFormRegister input{
+.inputFormRegister input {
     width: 270px;
     gap: 5px;
     margin-bottom: 20px;
@@ -56,7 +56,7 @@
     padding-left: 5px;
 }
 
-.inputForm{
+.inputForm {
     width: 100%;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .button i {
-    font-size: 16px; 
+    font-size: 16px;
     margin: 0;
     padding: 0;
 }
@@ -143,4 +143,76 @@ a {
 
 .social a :hover {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* iPhone 12 */
+@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
+    .loginContainer {
+        width: 90%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .loginContainer h1 {
+        font-size: 24px;
+        margin: 30px;
+    }
+
+    .loginContainer h1::before,
+    .loginContainer h1::after {
+        width: 30px;
+        height: 4px;
+    }
+
+    .loginContainer h1::before {
+        left: -35px;
+    }
+
+    .loginContainer h1::after {
+        right: -35px;
+    }
+
+    .inputFormRegister {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inputFormRegister input {
+        width: 100%;
+    }
+
+    .inputForm {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inputForm input {
+        width: 100%;
+    }
+
+    .passwordInput input {
+        width: 70%;
+    }
+
+    .button {
+        width: 20%;
+        margin-left: 5px;
+    }
+
+    .d-grid {
+        flex-direction: column;
+    }
+
+    .d-grid button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .loginContainer p {
+        margin-top: 5px;
+    }
+
+    .social ul {
+        margin-left: 40px;
+    }
 }

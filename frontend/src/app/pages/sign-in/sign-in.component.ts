@@ -12,13 +12,13 @@ import { RegistrationService } from '../../services/registration.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
-  
-  @Output() closeModal = new EventEmitter<void>();
-  @Input() toggleLogin: () => void = () => {};
 
-  signForm: FormGroup; 
+  @Output() closeModal = new EventEmitter<void>();
+  @Input() toggleLogin: () => void = () => { };
+
+  signForm: FormGroup;
   showPassword: boolean = false;
-  errorMessage: string | null = null;  
+  errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,

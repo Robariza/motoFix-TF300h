@@ -36,20 +36,18 @@
         <div class="inputForm">
             <label for="">Contraseña </label>
             <div class="passwordInput">
-              <input 
-                [type]="showPassword ? 'text' : 'password'" formControlName="password" id="password" required
-              >
-              <button class="button" type="button" (click)="togglePasswordVisibility()">
-                <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
-              </button>
+                <input [type]="showPassword ? 'text' : 'password'" formControlName="password" id="password" required>
+                <button class="button" type="button" (click)="togglePasswordVisibility()">
+                    <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+                </button>
             </div>
-          </div>
+        </div>
 
         <div class="d-grid gap-1 col-4">
             <button class="btn" type="submit">Regístrate</button>
         </div>
 
-        <p>¿Ya estás registrado? 
+        <p>¿Ya estás registrado?
             <button type="button" (click)="toggleLogin()" class="btnLink">Inicia sesión</button>
         </p>
 

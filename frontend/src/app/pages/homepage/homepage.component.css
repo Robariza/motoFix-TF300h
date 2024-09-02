@@ -1,8 +1,8 @@
-main{
+main {
     text-align: center;
 }
 
-.banner{
+.banner {
     width: 100vw;
 }
 
@@ -15,25 +15,26 @@ main{
     font-size: 25px;
     margin: 60px;
 }
-  
-.titulo::after, .titulo::before {
+
+.titulo::after,
+.titulo::before {
     content: "";
     position: absolute;
     top: 0.7em;
     width: 120px;
     height: 5px;
     background-color: #F4CE14;
-  }
-  
-.titulo::before{
+}
+
+.titulo::before {
     left: -140px;
 }
 
-.titulo::after{
+.titulo::after {
     right: -140px;
 }
 
-.categorias{
+.categorias {
     width: 100vw;
     margin-bottom: 15px;
 
@@ -44,20 +45,69 @@ main{
     text-align: center;
 }
 
-.categoria1{
+.categoria1 {
     margin: 10px;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.categoria1 img{
+.categoria1 img {
     width: 250px;
     height: 250px;
 }
 
-.categoria1 h3{
+.categoria1 h3 {
     font-size: 20px;
+}
+
+/* iPhone 12 */
+@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
+    main {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .banner {
+        display: none;
+    }
+
+    .titulo {
+        font-size: 22px;
+        margin: 30px;
+    }
+
+    .titulo::before,
+    .titulo::after {
+        width: 40px;
+    }
+
+    .titulo::before {
+        left: -45px;
+    }
+
+    .titulo::after {
+        right: -45px;
+    }
+
+    .categorias {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .categoria1 {
+        margin: 10px;
+        width: 100%;
+    }
+
+    .categoria1 img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .categoria1 h3 {
+        font-size: 18px;
+    }
 }

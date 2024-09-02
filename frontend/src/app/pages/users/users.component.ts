@@ -41,7 +41,7 @@ export class UsersComponent implements OnInit {
     } else {
       this.selectedUserId = null;
       this.form.reset({
-        role: 'user' 
+        role: 'user'
       });
     }
     this.showModal = true;
@@ -49,7 +49,7 @@ export class UsersComponent implements OnInit {
 
   closeModal() {
     this.showModal = false;
-    this.form.get('password')?.enable(); 
+    this.form.get('password')?.enable();
   }
 
   onSubmit() {

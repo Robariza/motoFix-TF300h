@@ -42,7 +42,7 @@ body {
     border-radius: 0.3rem;
     overflow: hidden;
     position: relative;
-    box-shadow:  -5px 5px 12px -5px rgba(0,0,0,0.75);
+    box-shadow: -5px 5px 12px -5px rgba(0, 0, 0, 0.75);
     flex-direction: column;
 }
 
@@ -112,5 +112,71 @@ body {
 
     100% {
         transform: translateX(-100%);
+    }
+}
+
+/* iPhone 12 */
+@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
+    body {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .titulo {
+        position: relative;
+        display: inline-block;
+
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+        font-weight: bolder;
+        font-size: 20px;
+    }
+
+    .titulo::after,
+    .titulo::before {
+        content: "";
+        position: absolute;
+        top: 0.7em;
+        width: 80px;
+        height: 5px;
+        background-color: #F4CE14;
+    }
+
+    .titulo::before {
+        left: -100px;
+    }
+
+    .titulo::after {
+        right: -100px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        box-shadow: -3px 3px 8px -3px rgba(0, 0, 0, 0.75);
+    }
+
+    .card img {
+        height: 60%;
+    }
+
+    .card-body {
+        height: auto;
+        padding: 0.25rem;
+    }
+
+    .card-title {
+        font-size: 16px;
+        width: auto;
+    }
+
+    .card-text p {
+        font-size: 14px;
+    }
+
+    .btn {
+        display: none;
     }
 }

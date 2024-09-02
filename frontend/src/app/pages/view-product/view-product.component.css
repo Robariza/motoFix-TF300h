@@ -1,9 +1,9 @@
-main{
+main {
     width: 100vw;
     height: 100%;
 }
 
-.viewproduct{
+.viewproduct {
     width: 100%;
     height: 100%;
 
@@ -20,7 +20,7 @@ main{
     align-items: center;
 }
 
-.img img{
+.img img {
     width: 50%;
     height: 100%;
 
@@ -28,12 +28,12 @@ main{
     object-fit: fill;
 }
 
-.description{
+.description {
     width: 35%;
     height: 100%;
 }
 
-.title{
+.title {
     font-weight: bold;
     font-size: 60px;
 
@@ -41,57 +41,232 @@ main{
     margin-bottom: 25px;
 }
 
-.price{   
+.price {
     font-size: 25px;
 }
 
-.price h5{
+.price h5 {
     margin-bottom: 10px;
     font-weight: 500;
 }
 
-.price p{
+.price p {
     margin-left: 20px;
 }
 
-.descriptionProduct{
+.descriptionProduct {
     font-size: 18px;
     margin-right: 20px;
 }
 
-.size{
+.size {
     font-size: 25px;
 }
 
-.size h5{
+.size h5 {
     margin-bottom: 10px;
     font-weight: 500;
 }
 
-.form-select{
+.form-select {
     width: 600px;
     margin: 20px;
 
     border: solid 2px var(--colorSecundario);
 }
 
-.quantity{
+.quantity {
     font-size: 25px;
 }
 
-.quantity h5{
+.quantity h5 {
     margin-bottom: 10px;
     font-weight: 500;
 }
 
-.d-grid{
+.d-grid {
     margin-top: 50px;
     margin-left: 200px;
 }
 
-.btn{
+.btn {
     background-color: var(--colorSecundario);
     color: white;
     font-weight: 600;
     padding: 10PX;
+}
+
+/* iPhone 12 */
+@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
+    main {
+        padding: 10px;
+        width: 100vw;
+        height: auto;
+    }
+
+    .viewproduct {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .img img {
+        width: 80%;
+        height: auto;
+        margin: 10px auto;
+    }
+
+    .description {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .title {
+        font-size: 28px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .price {
+        font-size: 20px;
+    }
+
+    .price h5 {
+        margin-bottom: 5px;
+    }
+
+    .price p {
+        margin-left: 10px;
+    }
+
+    .descriptionProduct {
+        font-size: 16px;
+    }
+
+    .size {
+        font-size: 20px;
+        margin-right: 20px;
+    }
+
+    .size h5 {
+        margin-bottom: 5px;
+    }
+
+    .form-select {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .quantity {
+        font-size: 20px;
+    }
+
+    .quantity h5 {
+        margin-bottom: 5px;
+    }
+
+    .d-grid {
+        margin-top: 20px;
+        margin-left: 0;
+    }
+
+    .btn {
+        margin-left: 90px;
+        width: 100%;
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+/* iPad Pro */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-device-pixel-ratio: 2) {
+    main {
+        width: 100vw;
+        height: 100%;
+    }
+
+    .viewproduct {
+        margin: 40px;
+    }
+
+    .img {
+        width: 40%;
+        height: 80%;
+        margin-right: 50px;
+    }
+
+    .img img {
+        width: 90%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .description {
+        width: 45%;
+        height: 100%;
+        padding: 20xp;
+    }
+
+    .title {
+        font-size: 50px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .price {
+        font-size: 30px;
+    }
+
+    .price h5 {
+        margin-bottom: 15px;
+    }
+
+    .price p {
+        margin-left: 25px;
+    }
+
+    .descriptionProduct {
+        font-size: 20px;
+    }
+
+    .size {
+        font-size: 30px;
+    }
+
+    .size h5 {
+        margin-bottom: 15px;
+    }
+
+    .form-select {
+        width: 500px;
+        margin: 20px;
+    }
+
+    .quantity {
+        font-size: 30px;
+    }
+
+    .quantity h5 {
+        margin-bottom: 15px;
+    }
+
+    .d-grid {
+        margin-top: 40px;
+        margin-left: 0;
+    }
+
+    .btn {
+        font-size: 18px;
+        padding: 12px;
+    }
 }

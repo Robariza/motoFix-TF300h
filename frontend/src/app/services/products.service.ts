@@ -8,9 +8,9 @@ import { Product } from '../interfaces/products';
 })
 export class ProductsService {
 
-  private apiUrl = 'http://localhost:3000/product'; 
+  private apiUrl = 'http://localhost:3000/product';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Obtener todos los productos
   getProducts(): Observable<Product[]> {

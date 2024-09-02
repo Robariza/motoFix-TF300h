@@ -13,14 +13,14 @@ export class QuantityInputComponent {
   quantity: number = 1;
 
   // Incrementa la cantidad en 1
-  increment(){
+  increment() {
     this.quantity++; // ++ -> operador que incrementa en 1 a la cantidad actual
   }
 
   // Método para decrementar la cantidad en 1
   // -> No permite que la cantidad sea menor que 1
-  decrement(){
-    if(this.quantity > 1){
+  decrement() {
+    if (this.quantity > 1) {
       this.quantity--; // -- -> operador que resta en 1 a la cantidad actual
     }
   }
