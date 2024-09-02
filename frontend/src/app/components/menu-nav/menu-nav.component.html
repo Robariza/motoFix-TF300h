@@ -1,10 +1,12 @@
 <div class="nav">
   <div class="navIcon">
+    <a routerLink="/hpage" ><img src="assets/logo/logo.png" alt="logo"></a>
+    <div class="buttonContainer">
     <button *ngIf="!isAuthenticated" (click)="toggleLogin()"><i class="fa-solid fa-user"></i></button>
-    <button *ngIf="isAuthenticated" (click)="logout()">
-      <i class="fa-solid fa-right-from-bracket"></i>
-    </button>
+    <button *ngIf="isAuthenticated" ><a routerLink="/userProfile"><i class="fa-solid fa-address-card"></i></a></button>
+    <button *ngIf="isAuthenticated" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
     <button *ngIf="!isAdmin" ><a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i></a></button>
+    </div>
   </div>
   <div class="navBar">
     <ul>

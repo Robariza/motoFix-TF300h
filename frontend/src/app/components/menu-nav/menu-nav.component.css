@@ -14,8 +14,18 @@
     border-bottom: solid 5px var(--colorContraste);
 
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
+}
+
+.buttonContainer{
+    display: flex;
+}
+
+.navIcon img{
+    width: 250px;
+    height: 100%;
+    margin-left: 20px;
 }
 
 .navIcon button {
@@ -53,7 +63,7 @@ a {
     text-decoration: none;
 }
 
-a:hover {
+.navIcon button:hover {
     color: var(--colorContraste);
 }
 

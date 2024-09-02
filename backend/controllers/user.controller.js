@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';  
+import jwt from '../lib/jwt.js';
 import { userModel } from "../models/user.model.js";  
 
 // Lógica para manejar las peticiones GET para obtener todos los usuarios
@@ -84,7 +85,7 @@ export const putUserById = async (req, res) => {
 
     try {
         // Extrae el ID del usuario a actualizar de los parámetros de la solicitud
-        const idForUpdate = req.params.id;
+        const idForUpdate = req.params._id;
 
         // Encripta la nueva contraseña si se proporciona
         if (password) {
@@ -105,5 +106,38 @@ export const putUserById = async (req, res) => {
     } catch (error) {
         // Manejo de errores en caso de fallo en la operación
         return res.status(500).json({ message: error.message });
+    }  
+};
+
+// Controlador para obtener el perfil del usuario autenticado
+export const getUserProfile = async (req, res) => {
+    try {
+        // Obtener el token del encabezado 'Authorization'
+        const token = req.headers.authorization?.split(' ')[1];
+
+        // Verificar si el token está presente
+        if (!token) {
+            return res.status(401).json({ message: 'Token no encontrado' });
+        }
+
+        // Decodificar el token para obtener el ID del usuario
+        const decoded = await jwt.verifyToken(token);
+
+        // Obtener el ID del usuario decodificado
+        const userId = decoded.id;
+
+        // Busca al usuario en la base de datos por su ID
+        const user = await userModel.findById(userId).select('-password'); 
+
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        // Devuelve la información del usuario
+        return res.status(200).json(user);
+    } catch (error) {
+        // Imprimir el error para depuración
+        console.error('Error al obtener el perfil del usuario:', error.message);
+        return res.status(500).json({ message: 'Error al obtener el perfil del usuario' });
     }
 };

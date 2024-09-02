@@ -1,7 +1,7 @@
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    padding: 40px;
     gap: 40px;
 }
 
@@ -14,6 +14,7 @@ body {
     font-size: 25px;
     margin-left: 150px;
     margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .titulo::after,

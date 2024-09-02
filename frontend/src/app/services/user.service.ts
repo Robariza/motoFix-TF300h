@@ -7,9 +7,9 @@ import { User } from '../interfaces/user';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/user'; 
+  private apiUrl = 'http://localhost:3000/user';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Obtener todos los usuarios
   getUsers(): Observable<User[]> {
@@ -56,6 +56,15 @@ export class UserService {
       );
   }
 
+  // Método para obtener el perfil del usuario autenticado
+  getUserProfile(): Observable<User> {
+    const headers = this.createAuthorizationHeader();
+    return this.http.get<User>(`${this.apiUrl}/profile`, { headers })
+      .pipe(
+        catchError(this.handleError<User>('getUserProfile'))
+      );
+  }
+
   // Crear encabezados con token de autorización
   private createAuthorizationHeader(): HttpHeaders {
     const token = localStorage.getItem('authToken');
@@ -69,4 +78,5 @@ export class UserService {
       return of(result as T);
     };
   }
+
 }

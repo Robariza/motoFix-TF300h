@@ -1,6 +1,7 @@
 // Importaciones
 import express from 'express';
-import { getUsers, postUser, deleteUserById, putUserById } from '../controllers/user.controller.js';
+import { getUsers, postUser, deleteUserById, putUserById, getUserProfile } from '../controllers/user.controller.js';
+import auth from '../middlewares/auth.js'
 
 // Configuramos el Router de express
 const usersRouter = express.Router();
@@ -18,6 +19,9 @@ usersRouter.delete('/:id', deleteUserById);
 
 // Ruta para la petición PUT
 usersRouter.put('/:id', putUserById);
+
+// Ruta para obtener el perfil del usuario autenticado
+usersRouter.get('/profile', auth(), getUserProfile)
 
 // Exportación de rutas
 export default usersRouter;
