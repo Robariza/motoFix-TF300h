@@ -9,4 +9,5 @@
     object-fit: fill;
     height: 600px;
     width: 100vw;
+    transition-duration: 0.8s;
 }

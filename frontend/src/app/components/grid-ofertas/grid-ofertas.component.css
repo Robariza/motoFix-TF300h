@@ -13,3 +13,11 @@
 .card:hover .card-img-top {
   transform: scale(1.1);
 }
+
+.zoom-image {
+  transition: transform 0.3s ease-in-out;
+}
+
+.zoom-image:hover {
+  transform: scale(1.1);
+}

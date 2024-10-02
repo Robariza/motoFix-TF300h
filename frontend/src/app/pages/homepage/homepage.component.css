@@ -57,6 +57,11 @@ main {
 .categoria1 img {
     width: 250px;
     height: 250px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.categoria1 img:hover {
+    transform: scale(1.1);
 }
 
 .categoria1 h3 {
@@ -105,6 +110,10 @@ main {
     .categoria1 img {
         width: 200px;
         height: 200px;
+    }
+
+    .categoria1 img:hover {
+        transform: scale(1.05);
     }
 
     .categoria1 h3 {

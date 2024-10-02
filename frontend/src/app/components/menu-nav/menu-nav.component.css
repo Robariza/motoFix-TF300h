@@ -63,6 +63,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    color: var(--colorContraste);
+}
+
 .navIcon button:hover {
     color: var(--colorContraste);
 }
