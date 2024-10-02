@@ -1,6 +1,9 @@
-body {
+
+
+.cardContainer{
     display: flex;
-    justify-content: left;
+    justify-content: center;
+    flex-wrap: wrap;
     padding: 40px;
     gap: 40px;
 }
@@ -36,6 +39,7 @@ body {
 }
 
 .card {
+    flex: 0 1 calc(20% - 16px);
     width: 360px;
     height: 480px;
     border: none;

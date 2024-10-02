@@ -1,6 +1,6 @@
 <h1 class="titulo">PRODUCTOS</h1>
 
-<body>
+<div class="cardContainer">
   <div class="card" *ngFor="let product of products$ | async" style="width: 18rem;" (click)="viewProduct(product._id)">
     <img src="{{product.images}}" class="card-img-top" alt="imagen">
     <div class="card-body">
@@ -11,4 +11,4 @@
       <a href="#" class="btn btn-warning">+cart</a>
     </div>
   </div>
-</body>
+</div>
