@@ -29,7 +29,8 @@ connectionMongo();
 app.use(express.json());
 
 // Uso de CORS
-app.use(cors());
+app.use(cors({ origin: 'http://137.184.16.192' }));
+
 
 // Rutas
 app.use('/user', usersRouter);
