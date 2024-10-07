@@ -47,6 +47,6 @@ app.use('/login', loginService);
 app.use('/signin', signinService);
 
 // ESCUCHAR SERVIDOR
-app.listen(port, '137.184.16.192', () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`El servidor se está escuchando en el puerto : ${port}`);
 });
