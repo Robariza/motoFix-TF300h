@@ -29,7 +29,12 @@ connectionMongo();
 app.use(express.json());
 
 // Uso de CORS
-app.use(cors({ origin: 'http://0.0.0.0' }));
+const corsOptions = {
+    origin: 'http://137.184.16.192', // Permite el origen correcto
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 
 // Rutas
@@ -42,6 +47,6 @@ app.use('/login', loginService);
 app.use('/signin', signinService);
 
 // ESCUCHAR SERVIDOR
-app.listen(port,'0.0.0.0', () => {
+app.listen(port, '137.184.16.192', () => {
     console.log(`El servidor se está escuchando en el puerto : ${port}`);
 });
