@@ -7,7 +7,7 @@ import { Observable, catchError, tap, of } from 'rxjs';
   providedIn: 'root'
 })
 export class RegistrationService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://137.184.16.192:3000';
 
   constructor(private http: HttpClient) { }
 

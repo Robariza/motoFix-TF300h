@@ -7,7 +7,7 @@ import { Observable, catchError, of } from 'rxjs';
 })
 export class AdminService {
 
-  private apiUrl = 'http://localhost:3000/admin';
+  private apiUrl = 'http://137.184.16.192:3000/admin';
 
   constructor(private http: HttpClient) { }
 
