@@ -9,7 +9,6 @@ main {
     height: 100%;
 
     display: flex;
-    justify-content: center;
     margin: 40px;
 }
 
@@ -17,9 +16,8 @@ main {
     width: 50%;
     height: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-content: center;
 }
 
 .img img {
