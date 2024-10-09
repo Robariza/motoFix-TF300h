@@ -1,4 +1,5 @@
-<div class="nav">
+<!-- Nav desktop -->
+<div class="nav" *ngIf="isDesktop">
   <div class="navIcon">
     <a routerLink="/hpage"><img src="assets/logo/logo.png" alt="logo"></a>
     <div class="buttonContainer">
@@ -19,6 +20,45 @@
     </ul>
   </div>
 </div>
+
+<!-- Nav responsive -->
+<nav class="navbar navbar-expand-lg " *ngIf="!isDesktop">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/hpage">
+      <img src="assets/logo/logo-responsive.png" alt="logo" width="80" height="50"
+        class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="iconamoon--menu-burger-horizontal-duotone"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Lista -->
+      <ul class="navbar-nav">
+        <li *ngIf="!isAdmin" class="nav-item"><a class="nav-link active" aria-current="page"
+            routerLink="/hpage">INICIO</a></li>
+        <li *ngIf="!isAdmin" class="nav-item"><a class="nav-link active" aria-current="page"
+            routerLink="/product">PRODUCTOS</a></li>
+        <li *ngIf="isAdmin" class="nav-item"><a class="nav-link active" aria-current="page"
+            routerLink="/admin">ADMINISTRADORES</a></li>
+        <li *ngIf="isAdmin" class="nav-item"><a class="nav-link active" aria-current="page"
+            routerLink="/adminProducts">PRODUCTOS</a></li>
+        <li *ngIf="isAdmin" class="nav-item"><a class="nav-link active" aria-current="page"
+            routerLink="/adminCategory">CATEGORÍAS</a></li>
+        <li *ngIf="isAdmin" class="nav-item"><a class="nav-link active" aria-current="page"
+            routerLink="/userManagement">USUARIOS</a></li>
+        <!-- Iconos -->
+        <div class="icons">
+          <button *ngIf="!isAuthenticated" (click)="toggleLogin()"><i class="fa-solid fa-user"></i></button>
+          <button *ngIf="isAuthenticated"><a routerLink="/userProfile"><i
+                class="fa-solid fa-address-card"></i></a></button>
+          <button *ngIf="isAuthenticated" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
+          <button *ngIf="!isAdmin"><a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i></a></button>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <!-- Formulario Registro -->
 <div *ngIf="isVisibleRegister" class="modal-backdrop" (click)="onBackdropClick($event)">

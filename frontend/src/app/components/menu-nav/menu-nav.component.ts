@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { LogInComponent } from '../../pages/log-in/log-in.component';
 import { SignInComponent } from '../../pages/sign-in/sign-in.component';
@@ -17,7 +17,8 @@ export class MenuNavComponent implements OnInit {
   isVisibleLogin = false;
   isAuthenticated = false;
   isAdmin = false;
-
+  isDesktop: boolean = true;
+  
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -28,6 +29,8 @@ export class MenuNavComponent implements OnInit {
     this.authService.getUserRole().subscribe(role => {
       this.isAdmin = role === 'admin';
     });
+
+    this.onResize();
   }
 
   toggleRegister(): void {
@@ -50,5 +53,12 @@ export class MenuNavComponent implements OnInit {
     this.isAuthenticated = false;
     this.isAdmin = false;
     this.router.navigate(['/hpage']);
+    window.location.reload();
+  }
+
+  // HostListener escucha los cambios de tamaño de la ventana
+  @HostListener('window:resize', ['$event'])
+  onResize(event?: any) {
+    this.isDesktop = window.innerWidth > 768; // Cambia el valor según el ancho de la pantalla
   }
 }

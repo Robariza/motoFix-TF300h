@@ -91,52 +91,59 @@ a:hover {
     z-index: 1060;
 }
 
-/* iPhone 12 */
-@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
-    .nav {
-        height: auto;
-        font-size: 14px;
-    }
+/* Nav responsive */
 
-    .navIcon {
-        height: 60%;
-        padding: 10px;
-    }
-
-    .buttonContainer {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
-
-    .navIcon img {
-        width: 200px;
-        height: auto;
-        margin-left: 10px;
-    }
-
-    .navIcon button {
-        margin-right: 20px;
-    }
-
-    .navIcon i {
-        font-size: 18px;
-    }
-
-    .navBar {
-        height: auto;
-    }
-
-    .navBar ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 8px;
-        margin-top: 10px;
-    }
-
-    .navBar ul a {
-        font-size: 14px;
-    }
+.container-fluid {
+    background-color: var(--colorPrincipal);
 }
+
+.navbar-toggler {
+    border: solid 1px var(--colorContraste);
+    color: transparent;
+}
+
+.iconamoon--menu-burger-horizontal-duotone {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 6.001h18m-18 6h18m-18 6h18'/%3E%3C/svg%3E");
+}
+
+.navbar-nav a {
+    font-family: var(--fontFamily);
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-nav a:hover {
+    color: var(--colorContraste);
+}
+
+.icons {
+    width: 100%;
+    border-top: solid 1px var(--colorContraste);
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+}
+
+.navbar-collapse button {
+    color: white;
+    background-color: var(--colorPrincipal);
+    border: none;
+    display: flex;
+    list-style: none;
+}
+
+.navbar-collapse i {
+    font-size: 18px;
+    margin: 4px;
+}
+
+.icons button:hover {
+    color: var(--colorContraste);
+}
+
