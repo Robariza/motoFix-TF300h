@@ -6,3 +6,12 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
+
+header {
+    width: 100vw;
+    z-index: 1000;
+    top: 20;
+    left: 0;
+    position: fixed;
+    transition: 0.5s;
+}

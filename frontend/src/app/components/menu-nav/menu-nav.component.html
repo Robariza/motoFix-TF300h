@@ -1,5 +1,5 @@
 <!-- Nav desktop -->
-<div class="nav" *ngIf="isDesktop">
+<div class="nav-desktop" *ngIf="isDesktop">
   <div class="navIcon">
     <a routerLink="/hpage"><img src="assets/logo/logo.png" alt="logo"></a>
     <div class="buttonContainer">
@@ -9,7 +9,7 @@
       <button *ngIf="!isAdmin"><a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i></a></button>
     </div>
   </div>
-  <div class="navBar">
+  <div class="navList">
     <ul>
       <li *ngIf="!isAdmin"><a routerLink="/hpage">INICIO</a></li>
       <li *ngIf="!isAdmin"><a routerLink="/product">PRODUCTOS</a></li>

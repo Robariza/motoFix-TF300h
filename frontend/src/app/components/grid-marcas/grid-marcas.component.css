@@ -2,6 +2,14 @@
     margin-bottom: 100px;
 }
 
+.container img {
+    transition: transform 0.2s;
+}
+
+.container img:hover {
+    transform: scale(1.05); 
+}
+
 .mb-3 img {
     width: 130px;
     height: 80px;

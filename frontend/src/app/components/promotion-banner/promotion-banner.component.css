@@ -8,7 +8,7 @@
 .bannerContent {
     position: absolute;
     white-space: nowrap;
-    animation: moveText 18s linear infinite;
+    animation: moveText 15s linear infinite;
 }
 
 .bannerContent span {
@@ -22,10 +22,27 @@
 
 @keyframes moveText {
     0% {
-        transform: translateX(350%);
+        transform: translateX(450%);
     }
 
     100% {
         transform: translateX(-100%);
     }
 }
+
+@media (max-width: 768px) {
+
+    .bannerContent{
+        animation: moveText 10s linear infinite;
+    }
+
+    @keyframes moveText {
+        0% {
+            transform: translateX(20%);
+        }
+    
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+};
