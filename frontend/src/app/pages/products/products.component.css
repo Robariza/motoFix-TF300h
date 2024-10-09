@@ -39,7 +39,6 @@
 }
 
 .card {
-    flex: 0 1 calc(20% - 16px);
     width: 360px;
     height: 480px;
     border: none;
@@ -168,11 +167,6 @@
 @media (min-width: 600px) and (max-width: 1024px) {
     .card{
         width: 450px;
-        height: 600px;
-    }
-
-    .card img {
-        height: 50%;
-        object-fit: cover;
+        height: 520px;
     }
 }
