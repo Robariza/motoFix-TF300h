@@ -119,7 +119,7 @@
     }
 }
 
-/* iPhone 12 */
+/* Responsive */
 @media (max-width: 768px) {
     body {
         flex-direction: column;
@@ -154,34 +154,5 @@
 
     .titulo::after {
         right: -100px;
-    }
-
-    .card {
-        width: 100%;
-        max-width: 250px;
-        height: auto;
-        box-shadow: -3px 3px 8px -3px rgba(0, 0, 0, 0.75);
-    }
-
-    .card img {
-        height: 60%;
-    }
-
-    .card-body {
-        height: auto;
-        padding: 0.25rem;
-    }
-
-    .card-title {
-        font-size: 16px;
-        width: auto;
-    }
-
-    .card-text p {
-        font-size: 14px;
-    }
-
-    .btn {
-        display: none;
     }
 }
