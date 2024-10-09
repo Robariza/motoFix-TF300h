@@ -96,6 +96,7 @@ main {
 /* iPhone 12 */
 @media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
     main {
+        margin-top: 70px;
         padding: 10px;
         width: 100vw;
         height: auto;
