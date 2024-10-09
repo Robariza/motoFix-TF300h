@@ -16,7 +16,7 @@
     font-weight: bolder;
     font-size: 25px;
     margin-left: 150px;
-    margin-top: 60px;
+    margin-top: 240px;
     margin-bottom: 60px;
 }
 
@@ -120,7 +120,7 @@
 }
 
 /* iPhone 12 */
-@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
+@media (max-width: 768px) {
     body {
         flex-direction: column;
         align-items: center;
@@ -135,6 +135,7 @@
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
         font-weight: bolder;
         font-size: 20px;
+        margin-top: 110px;
     }
 
     .titulo::after,
