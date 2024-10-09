@@ -1,7 +1,7 @@
 main {
     margin-top: 180px;
     width: 100vw;
-    height: 100%;
+    height: auto;
 }
 
 .viewproduct {
@@ -97,7 +97,7 @@ main {
 /* iPhone 12 */
 @media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
     main {
-        margin-top: 180px;
+        margin-top: 150px;
         padding: 10px;
         width: 100vw;
         height: auto;
@@ -192,7 +192,7 @@ main {
     main {
         margin-top: 220px;
         width: 100vw;
-        height: 100%;
+        height: auto;
     }
 
     .viewproduct {
