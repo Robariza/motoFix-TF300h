@@ -50,7 +50,9 @@ export class LogInComponent {
       next: (response) => {
         if (response && response.token) { // Verifica que hay un token
           this.closeModal.emit(); // Cierra el modal
-          this.router.navigate(['/hpage']); // Navega a la ruta de inicio
+          this.router.navigate(['/hpage']).then(() => {
+            window.location.reload(); // Recarga la página después de navegar
+          });
         } else {
           this.errorMessage = 'Error inesperado. Intenta de nuevo.';
         }
