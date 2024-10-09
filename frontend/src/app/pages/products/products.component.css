@@ -155,4 +155,12 @@
     .titulo::after {
         right: -100px;
     }
+
+    .cardContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
 }
