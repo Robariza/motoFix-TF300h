@@ -94,8 +94,9 @@ main {
     padding: 10PX;
 }
 
-/* iPhone 12 */
-@media only screen and (min-device-width: 390px) and (max-device-width: 844px) and (-webkit-device-pixel-ratio: 3) {
+/* Responsive mobile*/
+
+@media (max-width: 480px) {
     main {
         margin-top: 150px;
         padding: 10px;
@@ -187,8 +188,8 @@ main {
     }
 }
 
-/* iPad Pro */
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-device-pixel-ratio: 2) {
+/* Responsive Tablet*/
+@media (max-width: 768px) {
     main {
         margin-top: 220px;
         width: 100vw;
