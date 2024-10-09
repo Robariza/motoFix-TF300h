@@ -15,3 +15,8 @@ header {
     position: fixed;
     transition: 0.5s;
 }
+
+main{
+    width: 100vw;
+    height: auto;
+}
