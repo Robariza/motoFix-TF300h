@@ -170,4 +170,9 @@
         width: 450px;
         height: 600px;
     }
+
+    .card img {
+        height: 50%;
+        object-fit: cover;
+    }
 }
