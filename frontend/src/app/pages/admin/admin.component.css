@@ -138,12 +138,12 @@ form {
 
 @media (max-width: 768px) {
     .table-container {
-        margin-top: 40px;
+        margin-top: 60px;
     }
 }
 
 @media (max-width: 390px) {
     .table-container {
-        margin-top: 40px;
+        margin-top: 60px;
     }
 }
