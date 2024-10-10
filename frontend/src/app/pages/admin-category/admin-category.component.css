@@ -143,12 +143,12 @@ form {
 
 @media (max-width: 768px) {
     .table-container {
-        margin-top: 20px;
+        margin-top: 40px;
     }
 }
 
 @media (max-width: 390px) {
     .table-container {
-        margin-top: 20px;
+        margin-top: 40px;
     }
 }
