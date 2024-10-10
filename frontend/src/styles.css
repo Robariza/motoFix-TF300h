@@ -20,3 +20,15 @@ body {
     --colorFont: white;
     --fontFamily: "Poppins", sans-serif;
 }
+
+@media (max-width: 768px) {
+    body { 
+        overflow: auto;
+    }
+}
+
+@media (max-width: 390px) {
+    body { 
+        overflow-x: auto;
+    }
+}
