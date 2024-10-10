@@ -138,3 +138,16 @@ form {
     color: white;
     margin: 15px;
 }
+
+
+@media (max-width: 768px) {
+    .table-container {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 390px) {
+    .table-container {
+        margin-top: 20px;
+    }
+}

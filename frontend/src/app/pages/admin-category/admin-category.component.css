@@ -1,6 +1,7 @@
 /* table */
 
 .table-container {
+    margin-top: 190px;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 0.5rem;
@@ -137,4 +138,17 @@ form {
     background-color: var(--colorSecundario);
     color: white;
     margin: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .table-container {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 390px) {
+    .table-container {
+        margin-top: 20px;
+    }
 }
